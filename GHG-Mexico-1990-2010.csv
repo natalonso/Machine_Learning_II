@@ -1,0 +1,1135 @@
+Year,GHG,Sector,Subsector,Amount
+1990,CO2,Energy,Industrial,162232.413919153
+1990,CO2,Energy,Manufacture,56488.6002263955
+1990,CO2,Energy,Transport,153384.50606962
+1990,CO2,Energy,Other,33024.673605
+1990,CO2,Energy,Fugitive emissions,35233.7082732723
+1990,CO2,Industrial processes,Mineral,35233.7082732723
+1990,CO2,Industrial processes,Chemical,1348.5
+1990,CO2,Industrial processes,Metallurgy,5499.229
+1990,CO2,Agricuture,Fermentation,0
+1990,CO2,Agricuture,Manure,0
+1990,CO2,Agricuture,Rice farming,0
+1990,CO2,Agricuture,Soil treatment,0
+1990,CO2,Agricuture,Fires,0
+1990,CO2,Silviculture,Silviculture,45669.6435270232
+1990,CO2,Waste management,Elimination of solid waste,
+1990,CO2,Waste management,Bio-treatment of solid waste,
+1990,CO2,Waste management,Incineration,569.3568301794
+1990,CO2,Waste management,Waste water,
+1990,CH4,Energy,Industrial,163.9390218942
+1990,CH4,Energy,Manufacture,78.5333084883
+1990,CH4,Energy,Transport,469.6972968629
+1990,CH4,Energy,Other,1134.0443856
+1990,CH4,Energy,Fugitive emissions,83119.7721573818
+1990,CH4,Industrial processes,Mineral,0
+1990,CH4,Industrial processes,Chemical,69.9527071233
+1990,CH4,Industrial processes,Metallurgy,0
+1990,CH4,Agricuture,Fermentation,37961.494856208
+1990,CH4,Agricuture,Manure,1105.9769426654
+1990,CH4,Agricuture,Rice farming,137.751138
+1990,CH4,Agricuture,Soil treatment,0
+1990,CH4,Agricuture,Fires,41.7703438961
+1990,CH4,Silviculture,Silviculture,1110.1060177663
+1990,CH4,Waste management,Elimination of solid waste,22117.7400655388
+1990,CH4,Waste management,Bio-treatment of solid waste,249.697644
+1990,CH4,Waste management,Incineration,501.8257881
+1990,CH4,Waste management,Waste water,18454.1248700822
+1990,N2O,Energy,Industrial,572.893828697
+1990,N2O,Energy,Manufacture,173.6856798103
+1990,N2O,Energy,Transport,12557.7532905692
+1990,N2O,Energy,Other,417.11895
+1990,N2O,Energy,Fugitive emissions,0
+1990,N2O,Industrial processes,Mineral,0
+1990,N2O,Industrial processes,Chemical,130.4139
+1990,N2O,Industrial processes,Metallurgy,0
+1990,N2O,Agricuture,Fermentation,0
+1990,N2O,Agricuture,Manure,6447.4961904728
+1990,N2O,Agricuture,Rice farming,0
+1990,N2O,Agricuture,Soil treatment,46479.7585913414
+1990,N2O,Agricuture,Fires,10.1740623347
+1990,N2O,Silviculture,Silviculture,112.6625452555
+1990,N2O,Waste management,Elimination of solid waste,0
+1990,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1990,N2O,Waste management,Incineration,168.7506421
+1990,N2O,Waste management,Waste water,1942.2955164869
+1991,CO2,Energy,Industrial,106565.501500531
+1991,CO2,Energy,Manufacture,50755.8517671226
+1991,CO2,Energy,Transport,93813.5589090294
+1991,CO2,Energy,Other,28032.625137
+1991,CO2,Energy,Fugitive emissions,0
+1991,CO2,Industrial processes,Mineral,17474.389609314
+1991,CO2,Industrial processes,Chemical,4053
+1991,CO2,Industrial processes,Metallurgy,6954.8018
+1991,CO2,Agricuture,Fermentation,0
+1991,CO2,Agricuture,Manure,0
+1991,CO2,Agricuture,Rice farming,0
+1991,CO2,Agricuture,Soil treatment,0
+1991,CO2,Agricuture,Fires,0
+1991,CO2,Silviculture,Silviculture,122371.723301805
+1991,CO2,Waste management,Elimination of solid waste,0
+1991,CO2,Waste management,Bio-treatment of solid waste,0
+1991,CO2,Waste management,Incineration,124.2350331428
+1991,CO2,Waste management,Waste water,0
+1991,CH4,Energy,Industrial,62.4751641612
+1991,CH4,Energy,Manufacture,78.5548951316
+1991,CH4,Energy,Transport,417.4954967825
+1991,CH4,Energy,Other,1023.27398124
+1991,CH4,Energy,Fugitive emissions,45189.439072553
+1991,CH4,Industrial processes,Mineral,0
+1991,CH4,Industrial processes,Chemical,73.9906124946
+1991,CH4,Industrial processes,Metallurgy,0
+1991,CH4,Agricuture,Fermentation,38554.0304771683
+1991,CH4,Agricuture,Manure,1142.5012217479
+1991,CH4,Agricuture,Rice farming,254.21676
+1991,CH4,Agricuture,Soil treatment,0
+1991,CH4,Agricuture,Fires,31.5126236517
+1991,CH4,Silviculture,Silviculture,819.9258430585
+1991,CH4,Waste management,Elimination of solid waste,6427.9837346317
+1991,CH4,Waste management,Bio-treatment of solid waste,203.2228548
+1991,CH4,Waste management,Incineration,260.9651226
+1991,CH4,Waste management,Waste water,7907.0833523679
+1991,N2O,Energy,Industrial,173.255070564
+1991,N2O,Energy,Manufacture,178.0001963188
+1991,N2O,Energy,Transport,954.7616773761
+1991,N2O,Energy,Other,365.333109
+1991,N2O,Energy,Fugitive emissions,0
+1991,N2O,Industrial processes,Mineral,0
+1991,N2O,Industrial processes,Chemical,654.906
+1991,N2O,Industrial processes,Metallurgy,0
+1991,N2O,Agricuture,Fermentation,0
+1991,N2O,Agricuture,Manure,6119.434268443
+1991,N2O,Agricuture,Rice farming,0
+1991,N2O,Agricuture,Soil treatment,44932.1715057842
+1991,N2O,Agricuture,Fires,7.6755747609
+1991,N2O,Silviculture,Silviculture,83.2127120485
+1991,N2O,Waste management,Elimination of solid waste,0
+1991,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1991,N2O,Waste management,Incineration,88.9002066
+1991,N2O,Waste management,Waste water,1313.922596808
+1992,CO2,Energy,Industrial,105434.249650671
+1992,CO2,Energy,Manufacture,51331.2470590021
+1992,CO2,Energy,Transport,93609.4654669969
+1992,CO2,Energy,Other,30040.5905415
+1992,CO2,Energy,Fugitive emissions,0
+1992,CO2,Industrial processes,Mineral,18788.66254503
+1992,CO2,Industrial processes,Chemical,4017
+1992,CO2,Industrial processes,Metallurgy,6675.2083
+1992,CO2,Agricuture,Fermentation,0
+1992,CO2,Agricuture,Manure,0
+1992,CO2,Agricuture,Rice farming,0
+1992,CO2,Agricuture,Soil treatment,0
+1992,CO2,Agricuture,Fires,0
+1992,CO2,Silviculture,Silviculture,112144.600223966
+1992,CO2,Waste management,Elimination of solid waste,0
+1992,CO2,Waste management,Bio-treatment of solid waste,0
+1992,CO2,Waste management,Incineration,153.7076128836
+1992,CO2,Waste management,Waste water,0
+1992,CH4,Energy,Industrial,60.3235508022
+1992,CH4,Energy,Manufacture,74.2945348611
+1992,CH4,Energy,Transport,420.5393859339
+1992,CH4,Energy,Other,1033.0308723
+1992,CH4,Energy,Fugitive emissions,44357.6156519081
+1992,CH4,Industrial processes,Mineral,0
+1992,CH4,Industrial processes,Chemical,77.0542059008
+1992,CH4,Industrial processes,Metallurgy,0
+1992,CH4,Agricuture,Fermentation,37868.96940057
+1992,CH4,Agricuture,Manure,1119.4864559553
+1992,CH4,Agricuture,Rice farming,294.68124
+1992,CH4,Agricuture,Soil treatment,0
+1992,CH4,Agricuture,Fires,34.1930669327
+1992,CH4,Silviculture,Silviculture,819.9258430585
+1992,CH4,Waste management,Elimination of solid waste,6248.9305006515
+1992,CH4,Waste management,Bio-treatment of solid waste,204.570828
+1992,CH4,Waste management,Incineration,322.87337355
+1992,CH4,Waste management,Waste water,8253.4377660071
+1992,N2O,Energy,Industrial,170.106472484
+1992,N2O,Energy,Manufacture,175.5061233133
+1992,N2O,Energy,Transport,958.427769541
+1992,N2O,Energy,Other,372.960039
+1992,N2O,Energy,Fugitive emissions,0
+1992,N2O,Industrial processes,Mineral,0
+1992,N2O,Industrial processes,Chemical,340.008
+1992,N2O,Industrial processes,Metallurgy,0
+1992,N2O,Agricuture,Fermentation,0
+1992,N2O,Agricuture,Manure,6020.4622714111
+1992,N2O,Agricuture,Rice farming,0
+1992,N2O,Agricuture,Soil treatment,44431.0018466763
+1992,N2O,Agricuture,Fires,8.32845416
+1992,N2O,Silviculture,Silviculture,83.2127120485
+1992,N2O,Waste management,Elimination of solid waste,0
+1992,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1992,N2O,Waste management,Incineration,109.98983055
+1992,N2O,Waste management,Waste water,1361.1521117606
+1993,CO2,Energy,Industrial,105241.099181075
+1993,CO2,Energy,Manufacture,51921.240548822
+1993,CO2,Energy,Transport,95744.0538841351
+1993,CO2,Energy,Other,31095.0197085
+1993,CO2,Energy,Fugitive emissions,0
+1993,CO2,Industrial processes,Mineral,20041.551830444
+1993,CO2,Industrial processes,Chemical,3205.5
+1993,CO2,Industrial processes,Metallurgy,6355.5734
+1993,CO2,Agricuture,Fermentation,0
+1993,CO2,Agricuture,Manure,0
+1993,CO2,Agricuture,Rice farming,0
+1993,CO2,Agricuture,Soil treatment,0
+1993,CO2,Agricuture,Fires,0
+1993,CO2,Silviculture,Silviculture,111768.377964928
+1993,CO2,Waste management,Elimination of solid waste,0
+1993,CO2,Waste management,Bio-treatment of solid waste,0
+1993,CO2,Waste management,Incineration,201.3032300221
+1993,CO2,Waste management,Waste water,0
+1993,CH4,Energy,Industrial,57.64197117
+1993,CH4,Energy,Manufacture,79.8912317994
+1993,CH4,Energy,Transport,423.8236662413
+1993,CH4,Energy,Other,1041.24424614
+1993,CH4,Energy,Fugitive emissions,44710.9539298425
+1993,CH4,Industrial processes,Mineral,0
+1993,CH4,Industrial processes,Chemical,66.6074886129
+1993,CH4,Industrial processes,Metallurgy,0
+1993,CH4,Agricuture,Fermentation,37346.80171509
+1993,CH4,Agricuture,Manure,1154.8524785015
+1993,CH4,Agricuture,Rice farming,166.27632
+1993,CH4,Agricuture,Soil treatment,0
+1993,CH4,Agricuture,Fires,35.2005736949
+1993,CH4,Silviculture,Silviculture,819.9258430585
+1993,CH4,Waste management,Elimination of solid waste,6286.7366847503
+1993,CH4,Waste management,Bio-treatment of solid waste,210.65226
+1993,CH4,Waste management,Incineration,422.8512288
+1993,CH4,Waste management,Waste water,12808.0478756339
+1993,N2O,Energy,Industrial,171.89197595
+1993,N2O,Energy,Manufacture,186.7804667354
+1993,N2O,Energy,Transport,1231.2707103209
+1993,N2O,Energy,Other,378.149315
+1993,N2O,Energy,Fugitive emissions,0
+1993,N2O,Industrial processes,Mineral,0
+1993,N2O,Industrial processes,Chemical,424.08
+1993,N2O,Industrial processes,Metallurgy,0
+1993,N2O,Agricuture,Fermentation,0
+1993,N2O,Agricuture,Manure,6212.5197015105
+1993,N2O,Agricuture,Rice farming,0
+1993,N2O,Agricuture,Soil treatment,45260.8327014511
+1993,N2O,Agricuture,Fires,0
+1993,N2O,Silviculture,Silviculture,8.5738540214
+1993,N2O,Waste management,Elimination of solid waste,83.2127120485
+1993,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1993,N2O,Waste management,Incineration,144.0482208
+1993,N2O,Waste management,Waste water,1404.7836957084
+1994,CO2,Energy,Industrial,121749.602589912
+1994,CO2,Energy,Manufacture,55604.8337166903
+1994,CO2,Energy,Transport,100319.744336052
+1994,CO2,Energy,Other,31825.877919
+1994,CO2,Energy,Fugitive emissions,0
+1994,CO2,Industrial processes,Mineral,21568.095906569
+1994,CO2,Industrial processes,Chemical,3702
+1994,CO2,Industrial processes,Metallurgy,6462.522
+1994,CO2,Agricuture,Fermentation,0
+1994,CO2,Agricuture,Manure,0
+1994,CO2,Agricuture,Rice farming,0
+1994,CO2,Agricuture,Soil treatment,0
+1994,CO2,Agricuture,Fires,0
+1994,CO2,Silviculture,Silviculture,101394.468517558
+1994,CO2,Waste management,Elimination of solid waste,0
+1994,CO2,Waste management,Bio-treatment of solid waste,0
+1994,CO2,Waste management,Incineration,202.8677757092
+1994,CO2,Waste management,Waste water,0
+1994,CH4,Energy,Industrial,65.5644207204
+1994,CH4,Energy,Manufacture,72.8901644055
+1994,CH4,Energy,Transport,432.7278289318
+1994,CH4,Energy,Other,1050.24416868
+1994,CH4,Energy,Fugitive emissions,45953.7925890852
+1994,CH4,Industrial processes,Mineral,0
+1994,CH4,Industrial processes,Chemical,71.5266465488
+1994,CH4,Industrial processes,Metallurgy,0
+1994,CH4,Agricuture,Fermentation,37068.46173261
+1994,CH4,Agricuture,Manure,1144.2415449965
+1994,CH4,Agricuture,Rice farming,247.60008
+1994,CH4,Agricuture,Soil treatment,0
+1994,CH4,Agricuture,Fires,33.2787824797
+1994,CH4,Silviculture,Silviculture,819.9258430585
+1994,CH4,Waste management,Elimination of solid waste,6381.1776920911
+1994,CH4,Waste management,Bio-treatment of solid waste,212.4567816
+1994,CH4,Waste management,Incineration,426.1376574
+1994,CH4,Waste management,Waste water,13038.2917202587
+1994,N2O,Energy,Industrial,201.023195696
+1994,N2O,Energy,Manufacture,174.9393973634
+1994,N2O,Energy,Transport,1520.6198164438
+1994,N2O,Energy,Other,383.336793
+1994,N2O,Energy,Fugitive emissions,0
+1994,N2O,Industrial processes,Mineral,0
+1994,N2O,Industrial processes,Chemical,464.256
+1994,N2O,Industrial processes,Metallurgy,0
+1994,N2O,Agricuture,Fermentation,0
+1994,N2O,Agricuture,Manure,6187.6605754335
+1994,N2O,Agricuture,Rice farming,0
+1994,N2O,Agricuture,Soil treatment,0
+1994,N2O,Agricuture,Fires,8.1057605897
+1994,N2O,Silviculture,Silviculture,83.2127120485
+1994,N2O,Waste management,Elimination of solid waste,0
+1994,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1994,N2O,Waste management,Incineration,145.1677734
+1994,N2O,Waste management,Waste water,1449.6613614973
+1995,CO2,Energy,Industrial,112087.054328442
+1995,CO2,Energy,Manufacture,56394.1574559897
+1995,CO2,Energy,Transport,95380.4896012212
+1995,CO2,Energy,Other,31280.658585
+1995,CO2,Energy,Fugitive emissions,0
+1995,CO2,Industrial processes,Mineral,19222.481964701
+1995,CO2,Industrial processes,Chemical,3633
+1995,CO2,Industrial processes,Metallurgy,6881.0354
+1995,CO2,Agricuture,Fermentation,0
+1995,CO2,Agricuture,Manure,0
+1995,CO2,Agricuture,Rice farming,0
+1995,CO2,Agricuture,Soil treatment,0
+1995,CO2,Agricuture,Fires,0
+1995,CO2,Silviculture,Silviculture,91009.0290782564
+1995,CO2,Waste management,Elimination of solid waste,0
+1995,CO2,Waste management,Bio-treatment of solid waste,0
+1995,CO2,Waste management,Incineration,213.4069182414
+1995,CO2,Waste management,Waste water,0
+1995,CH4,Energy,Industrial,61.9266923268
+1995,CH4,Energy,Manufacture,80.7818550748
+1995,CH4,Energy,Transport,413.5256131989
+1995,CH4,Energy,Other,1058.01393537
+1995,CH4,Energy,Fugitive emissions,45155.7950939981
+1995,CH4,Industrial processes,Mineral,0
+1995,CH4,Industrial processes,Chemical,76.5724249091
+1995,CH4,Industrial processes,Metallurgy,0
+1995,CH4,Agricuture,Fermentation,36593.10170313
+1995,CH4,Agricuture,Manure,1130.6081087696
+1995,CH4,Agricuture,Rice farming,237.34116
+1995,CH4,Agricuture,Soil treatment,0
+1995,CH4,Agricuture,Fires,36.4007180598
+1995,CH4,Silviculture,Silviculture,819.9258430585
+1995,CH4,Waste management,Elimination of solid waste,6477.9859743634
+1995,CH4,Waste management,Bio-treatment of solid waste,213.8824128
+1995,CH4,Waste management,Incineration,448.2758553
+1995,CH4,Waste management,Waste water,13177.1835856563
+1995,N2O,Energy,Industrial,191.237431307
+1995,N2O,Energy,Manufacture,187.1386236681
+1995,N2O,Energy,Transport,1703.6390285423
+1995,N2O,Energy,Other,385.310625
+1995,N2O,Energy,Fugitive emissions,0
+1995,N2O,Industrial processes,Mineral,0
+1995,N2O,Industrial processes,Chemical,875.874
+1995,N2O,Industrial processes,Metallurgy,0
+1995,N2O,Agricuture,Fermentation,0
+1995,N2O,Agricuture,Manure,6120.9221997188
+1995,N2O,Agricuture,Rice farming,0
+1995,N2O,Agricuture,Soil treatment,44119.9779177155
+1995,N2O,Agricuture,Fires,8.8661748988
+1995,N2O,Silviculture,Silviculture,83.2127120485
+1995,N2O,Waste management,Elimination of solid waste,0
+1995,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1995,N2O,Waste management,Incineration,152.7093573
+1995,N2O,Waste management,Waste water,1472.7133517665
+1996,CO2,Energy,Industrial,115623.706421251
+1996,CO2,Energy,Manufacture,57327.0103091311
+1996,CO2,Energy,Transport,96613.8943208859
+1996,CO2,Energy,Other,33029.78745
+1996,CO2,Energy,Fugitive emissions,0
+1996,CO2,Industrial processes,Mineral,21811.698108013
+1996,CO2,Industrial processes,Chemical,3750
+1996,CO2,Industrial processes,Metallurgy,7132.0366
+1996,CO2,Agricuture,Fermentation,0
+1996,CO2,Agricuture,Manure,0
+1996,CO2,Agricuture,Rice farming,0
+1996,CO2,Agricuture,Soil treatment,0
+1996,CO2,Agricuture,Fires,0
+1996,CO2,Silviculture,Silviculture,89047.1389353488
+1996,CO2,Waste management,Elimination of solid waste,0
+1996,CO2,Waste management,Bio-treatment of solid waste,0
+1996,CO2,Waste management,Incineration,216.1672161702
+1996,CO2,Waste management,Waste water,0
+1996,CH4,Energy,Industrial,62.3328881196
+1996,CH4,Energy,Manufacture,80.617341474
+1996,CH4,Energy,Transport,404.6108892658
+1996,CH4,Energy,Other,1066.45355607
+1996,CH4,Energy,Fugitive emissions,50988.9812618275
+1996,CH4,Industrial processes,Mineral,0
+1996,CH4,Industrial processes,Chemical,77.5725776331
+1996,CH4,Industrial processes,Metallurgy,0
+1996,CH4,Agricuture,Fermentation,35457.64716165
+1996,CH4,Agricuture,Manure,1095.0463668735
+1996,CH4,Agricuture,Rice farming,242.38284
+1996,CH4,Agricuture,Soil treatment,0
+1996,CH4,Agricuture,Fires,36.5437346223
+1996,CH4,Silviculture,Silviculture,819.9258430585
+1996,CH4,Waste management,Elimination of solid waste,6667.2844500602
+1996,CH4,Waste management,Bio-treatment of solid waste,214.7428836
+1996,CH4,Waste management,Incineration,453.34577925
+1996,CH4,Waste management,Waste water,13657.4642267009
+1996,N2O,Energy,Industrial,204.943134629
+1996,N2O,Energy,Manufacture,194.5177974208
+1996,N2O,Energy,Transport,2255.1774320633
+1996,N2O,Energy,Other,391.081554
+1996,N2O,Energy,Fugitive emissions,0
+1996,N2O,Industrial processes,Mineral,0
+1996,N2O,Industrial processes,Chemical,1100.748
+1996,N2O,Industrial processes,Metallurgy,0
+1996,N2O,Agricuture,Fermentation,0
+1996,N2O,Agricuture,Manure,5938.1464631837
+1996,N2O,Agricuture,Rice farming,0
+1996,N2O,Agricuture,Soil treatment,43488.8125597849
+1996,N2O,Agricuture,Fires,8.9010096473
+1996,N2O,Silviculture,Silviculture,83.2127120485
+1996,N2O,Waste management,Elimination of solid waste,0
+1996,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1996,N2O,Waste management,Incineration,154.37447425
+1996,N2O,Waste management,Waste water,1494.4376226078
+1997,CO2,Energy,Industrial,123627.143755984
+1997,CO2,Energy,Manufacture,56277.8147957055
+1997,CO2,Energy,Transport,100408.370224292
+1997,CO2,Energy,Other,33123.6347805
+1997,CO2,Energy,Fugitive emissions,0
+1997,CO2,Industrial processes,Mineral,24856.551131927
+1997,CO2,Industrial processes,Chemical,3196.5
+1997,CO2,Industrial processes,Metallurgy,7022.7105
+1997,CO2,Agricuture,Fermentation,0
+1997,CO2,Agricuture,Manure,0
+1997,CO2,Agricuture,Rice farming,0
+1997,CO2,Agricuture,Soil treatment,0
+1997,CO2,Agricuture,Fires,0
+1997,CO2,Silviculture,Silviculture,85987.2287268365
+1997,CO2,Waste management,Elimination of solid waste,0
+1997,CO2,Waste management,Bio-treatment of solid waste,0
+1997,CO2,Waste management,Incineration,196.6708821124
+1997,CO2,Waste management,Waste water,0
+1997,CH4,Energy,Industrial,65.2189059228
+1997,CH4,Energy,Manufacture,84.9756940909
+1997,CH4,Energy,Transport,403.8196431107
+1997,CH4,Energy,Other,1074.46725183
+1997,CH4,Energy,Fugitive emissions,52219.9292557356
+1997,CH4,Industrial processes,Mineral,0
+1997,CH4,Industrial processes,Chemical,75.3309351516
+1997,CH4,Industrial processes,Metallurgy,0
+1997,CH4,Agricuture,Fermentation,35855.90785917
+1997,CH4,Agricuture,Manure,1108.5944543354
+1997,CH4,Agricuture,Rice farming,322.50792
+1997,CH4,Agricuture,Soil treatment,0
+1997,CH4,Agricuture,Fires,36.6556631261
+1997,CH4,Silviculture,Silviculture,819.9258430585
+1997,CH4,Waste management,Elimination of solid waste,7247.8207725725
+1997,CH4,Waste management,Bio-treatment of solid waste,215.0321376
+1997,CH4,Waste management,Incineration,410.5717161
+1997,CH4,Waste management,Waste water,13228.895399499
+1997,N2O,Energy,Industrial,211.984618872
+1997,N2O,Energy,Manufacture,208.1655125624
+1997,N2O,Energy,Transport,3033.4047818471
+1997,N2O,Energy,Other,393.149595
+1997,N2O,Energy,Fugitive emissions,0
+1997,N2O,Industrial processes,Mineral,0
+1997,N2O,Industrial processes,Chemical,850.764
+1997,N2O,Industrial processes,Metallurgy,0
+1997,N2O,Agricuture,Fermentation,0
+1997,N2O,Agricuture,Manure,6050.5393060387
+1997,N2O,Agricuture,Rice farming,0
+1997,N2O,Agricuture,Soil treatment,43562.6618971099
+1997,N2O,Agricuture,Fires,8.9282722329
+1997,N2O,Silviculture,Silviculture,83.2127120485
+1997,N2O,Waste management,Elimination of solid waste,0
+1997,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1997,N2O,Waste management,Incineration,139.6480901
+1997,N2O,Waste management,Waste water,1547.5894035381
+1998,CO2,Energy,Industrial,137881.476366981
+1998,CO2,Energy,Manufacture,57122.4393611961
+1998,CO2,Energy,Transport,103451.79988092
+1998,CO2,Energy,Other,34176.0309165
+1998,CO2,Energy,Fugitive emissions,0
+1998,CO2,Industrial processes,Mineral,25386.531815835
+1998,CO2,Industrial processes,Chemical,2728.5
+1998,CO2,Industrial processes,Metallurgy,7245.58341
+1998,CO2,Agricuture,Fermentation,0
+1998,CO2,Agricuture,Manure,0
+1998,CO2,Agricuture,Rice farming,0
+1998,CO2,Agricuture,Soil treatment,0
+1998,CO2,Agricuture,Fires,0
+1998,CO2,Silviculture,Silviculture,83201.4706872069
+1998,CO2,Waste management,Elimination of solid waste,0
+1998,CO2,Waste management,Bio-treatment of solid waste,0
+1998,CO2,Waste management,Incineration,205.2762913256
+1998,CO2,Waste management,Waste water,0
+1998,CH4,Energy,Industrial,75.7293291006
+1998,CH4,Energy,Manufacture,87.0977841581
+1998,CH4,Energy,Transport,398.7154390651
+1998,CH4,Energy,Other,1081.89411204
+1998,CH4,Energy,Fugitive emissions,54267.6972157988
+1998,CH4,Industrial processes,Mineral,0
+1998,CH4,Industrial processes,Chemical,75.608093294
+1998,CH4,Industrial processes,Metallurgy,0
+1998,CH4,Agricuture,Fermentation,36145.360575702
+1998,CH4,Agricuture,Manure,1093.8406753934
+1998,CH4,Agricuture,Rice farming,267.225756
+1998,CH4,Agricuture,Soil treatment,0
+1998,CH4,Agricuture,Fires,39.0557933946
+1998,CH4,Silviculture,Silviculture,819.9258430585
+1998,CH4,Waste management,Elimination of solid waste,7905.7433604098
+1998,CH4,Waste management,Bio-treatment of solid waste,218.539188
+1998,CH4,Waste management,Incineration,424.64247735
+1998,CH4,Waste management,Waste water,12972.3398750982
+1998,N2O,Energy,Industrial,233.934115769
+1998,N2O,Energy,Manufacture,212.7843809211
+1998,N2O,Energy,Transport,3906.3356347207
+1998,N2O,Energy,Other,398.346435
+1998,N2O,Energy,Fugitive emissions,0
+1998,N2O,Industrial processes,Mineral,0
+1998,N2O,Industrial processes,Chemical,773.76
+1998,N2O,Industrial processes,Metallurgy,0
+1998,N2O,Agricuture,Fermentation,0
+1998,N2O,Agricuture,Manure,6024.9513420135
+1998,N2O,Agricuture,Rice farming,0
+1998,N2O,Agricuture,Soil treatment,0
+1998,N2O,Agricuture,Fires,9.5128753911
+1998,N2O,Silviculture,Silviculture,83.2127120485
+1998,N2O,Waste management,Elimination of solid waste,0
+1998,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1998,N2O,Waste management,Incineration,144.10042635
+1998,N2O,Waste management,Waste water,1585.1734157021
+1999,CO2,Energy,Industrial,136071.809548548
+1999,CO2,Energy,Manufacture,51178.0528702691
+1999,CO2,Energy,Transport,104849.735004899
+1999,CO2,Energy,Other,29596.8315555
+1999,CO2,Energy,Fugitive emissions,0
+1999,CO2,Industrial processes,Mineral,28718.428672053
+1999,CO2,Industrial processes,Chemical,1830
+1999,CO2,Industrial processes,Metallurgy,7342.79465
+1999,CO2,Agricuture,Fermentation,0
+1999,CO2,Agricuture,Manure,0
+1999,CO2,Agricuture,Rice farming,0
+1999,CO2,Agricuture,Soil treatment,0
+1999,CO2,Agricuture,Fires,0
+1999,CO2,Silviculture,Silviculture,80105.6540175383
+1999,CO2,Waste management,Elimination of solid waste,0
+1999,CO2,Waste management,Bio-treatment of solid waste,0
+1999,CO2,Waste management,Incineration,201.458641293
+1999,CO2,Waste management,Waste water,0
+1999,CH4,Energy,Industrial,76.8546397962
+1999,CH4,Energy,Manufacture,79.427002676
+1999,CH4,Energy,Transport,388.8787327916
+1999,CH4,Energy,Other,1088.44924125
+1999,CH4,Energy,Fugitive emissions,54999.3996367222
+1999,CH4,Industrial processes,Mineral,0
+1999,CH4,Industrial processes,Chemical,72.2247326515
+1999,CH4,Industrial processes,Metallurgy,0
+1999,CH4,Agricuture,Fermentation,35297.065954773
+1999,CH4,Agricuture,Manure,1079.5243605228
+1999,CH4,Agricuture,Rice farming,218.01276
+1999,CH4,Agricuture,Soil treatment,0
+1999,CH4,Agricuture,Fires,37.3099641293
+1999,CH4,Silviculture,Silviculture,819.9258430585
+1999,CH4,Waste management,Elimination of solid waste,9406.9137965831
+1999,CH4,Waste management,Bio-treatment of solid waste,219.5685492
+1999,CH4,Waste management,Incineration,417.71564835
+1999,CH4,Waste management,Waste water,13288.8394591603
+1999,N2O,Energy,Industrial,228.729259913
+1999,N2O,Energy,Manufacture,194.9820092054
+1999,N2O,Energy,Transport,4309.1139374896
+1999,N2O,Energy,Other,391.994783
+1999,N2O,Energy,Fugitive emissions,0
+1999,N2O,Industrial processes,Mineral,0
+1999,N2O,Industrial processes,Chemical,643.002
+1999,N2O,Industrial processes,Metallurgy,0
+1999,N2O,Agricuture,Fermentation,0
+1999,N2O,Agricuture,Manure,5961.3868313443
+1999,N2O,Agricuture,Rice farming,0
+1999,N2O,Agricuture,Soil treatment,43558.644895351
+1999,N2O,Agricuture,Fires,9.0876412629
+1999,N2O,Silviculture,Silviculture,83.2127120485
+1999,N2O,Waste management,Elimination of solid waste,0
+1999,N2O,Waste management,Bio-treatment of solid waste,127.0566
+1999,N2O,Waste management,Incineration,141.83373735
+1999,N2O,Waste management,Waste water,1636.6848751298
+2000,CO2,Energy,Industrial,144851.28550618
+2000,CO2,Energy,Manufacture,57156.3001304772
+2000,CO2,Energy,Transport,109410.285842918
+2000,CO2,Energy,Other,30445.87458
+2000,CO2,Energy,Fugitive emissions,0
+2000,CO2,Industrial processes,Mineral,31626.970155157
+2000,CO2,Industrial processes,Chemical,1384.5
+2000,CO2,Industrial processes,Metallurgy,7383.789335
+2000,CO2,Agricuture,Fermentation,0
+2000,CO2,Agricuture,Manure,0
+2000,CO2,Agricuture,Rice farming,0
+2000,CO2,Agricuture,Soil treatment,0
+2000,CO2,Agricuture,Fires,0
+2000,CO2,Silviculture,Silviculture,73791.069364467
+2000,CO2,Waste management,Elimination of solid waste,0
+2000,CO2,Waste management,Bio-treatment of solid waste,0
+2000,CO2,Waste management,Incineration,206.7540771819
+2000,CO2,Waste management,Waste water,0
+2000,CH4,Energy,Industrial,83.3520574047
+2000,CH4,Energy,Manufacture,79.2024727301
+2000,CH4,Energy,Transport,397.3919187479
+2000,CH4,Energy,Other,1235.9321772
+2000,CH4,Energy,Fugitive emissions,54354.2068527434
+2000,CH4,Industrial processes,Mineral,0
+2000,CH4,Industrial processes,Chemical,73.2576601165
+2000,CH4,Industrial processes,Metallurgy,0
+2000,CH4,Agricuture,Fermentation,35810.090731653
+2000,CH4,Agricuture,Manure,1080.2550306182
+2000,CH4,Agricuture,Rice farming,224.79744
+2000,CH4,Agricuture,Soil treatment,0
+2000,CH4,Agricuture,Fires,35.0937599032
+2000,CH4,Silviculture,Silviculture,819.9258430585
+2000,CH4,Waste management,Elimination of solid waste,10658.3018003646
+2000,CH4,Waste management,Bio-treatment of solid waste,220.4395032
+2000,CH4,Waste management,Incineration,428.8390743
+2000,CH4,Waste management,Waste water,13477.5051289963
+2000,N2O,Energy,Industrial,237.191690784
+2000,N2O,Energy,Manufacture,185.2799287978
+2000,N2O,Energy,Transport,5026.9404990359
+2000,N2O,Energy,Other,442.03706
+2000,N2O,Energy,Fugitive emissions,0
+2000,N2O,Industrial processes,Mineral,0
+2000,N2O,Industrial processes,Chemical,278.814
+2000,N2O,Industrial processes,Metallurgy,0
+2000,N2O,Agricuture,Fermentation,0
+2000,N2O,Agricuture,Manure,6044.916484308
+2000,N2O,Agricuture,Rice farming,0
+2000,N2O,Agricuture,Soil treatment,43855.8946458851
+2000,N2O,Agricuture,Fires,8.5478372336
+2000,N2O,Silviculture,Silviculture,83.2127120485
+2000,N2O,Waste management,Elimination of solid waste,0
+2000,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2000,N2O,Waste management,Incineration,145.6385363
+2000,N2O,Waste management,Waste water,1706.4847475709
+2001,CO2,Energy,Industrial,150622.991340679
+2001,CO2,Energy,Manufacture,51224.1224674114
+2001,CO2,Energy,Transport,25457.67862
+2001,CO2,Energy,Other,29717.88237
+2001,CO2,Energy,Fugitive emissions,0
+2001,CO2,Industrial processes,Mineral,33791.867712164
+2001,CO2,Industrial processes,Chemical,1062
+2001,CO2,Industrial processes,Metallurgy,6702.5627
+2001,CO2,Agricuture,Fermentation,0
+2001,CO2,Agricuture,Manure,0
+2001,CO2,Agricuture,Rice farming,0
+2001,CO2,Agricuture,Soil treatment,0
+2001,CO2,Agricuture,Fires,0
+2001,CO2,Silviculture,Silviculture,62084.475370407
+2001,CO2,Waste management,Elimination of solid waste,0
+2001,CO2,Waste management,Bio-treatment of solid waste,0
+2001,CO2,Waste management,Incineration,211.5280590981
+2001,CO2,Waste management,Waste water,0
+2001,CH4,Energy,Industrial,93.5561374188
+2001,CH4,Energy,Manufacture,78.6085310619
+2001,CH4,Energy,Transport,385.1428388274
+2001,CH4,Energy,Other,1159.6667943
+2001,CH4,Energy,Fugitive emissions,52167.6332672954
+2001,CH4,Industrial processes,Mineral,0
+2001,CH4,Industrial processes,Chemical,62.9421467384
+2001,CH4,Industrial processes,Metallurgy,0
+2001,CH4,Agricuture,Fermentation,35938.591742907
+2001,CH4,Agricuture,Manure,1079.1278855177
+2001,CH4,Agricuture,Rice farming,136.8077088
+2001,CH4,Agricuture,Soil treatment,0
+2001,CH4,Agricuture,Fires,37.8911697103
+2001,CH4,Silviculture,Silviculture,819.9258430585
+2001,CH4,Waste management,Elimination of solid waste,11734.6857656552
+2001,CH4,Waste management,Bio-treatment of solid waste,220.3423908
+2001,CH4,Waste management,Incineration,438.50301495
+2001,CH4,Waste management,Waste water,13506.6795798135
+2001,N2O,Energy,Industrial,254.154261422
+2001,N2O,Energy,Manufacture,185.4501903047
+2001,N2O,Energy,Transport,5967.3051998115
+2001,N2O,Energy,Other,417.85892
+2001,N2O,Energy,Fugitive emissions,0
+2001,N2O,Industrial processes,Mineral,0
+2001,N2O,Industrial processes,Chemical,232.59672
+2001,N2O,Industrial processes,Metallurgy,0
+2001,N2O,Agricuture,Fermentation,0
+2001,N2O,Agricuture,Manure,6065.9696544744
+2001,N2O,Agricuture,Rice farming,0
+2001,N2O,Agricuture,Soil treatment,44416.8291014512
+2001,N2O,Agricuture,Fires,9.2292063366
+2001,N2O,Silviculture,Silviculture,83.2127120485
+2001,N2O,Waste management,Elimination of solid waste,0
+2001,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2001,N2O,Waste management,Incineration,148.88414795
+2001,N2O,Waste management,Waste water,1759.019666093
+2002,CO2,Energy,Industrial,152021.62884144
+2002,CO2,Energy,Manufacture,52839.5991885973
+2002,CO2,Energy,Transport,110807.063412813
+2002,CO2,Energy,Other,29941.952205
+2002,CO2,Energy,Fugitive emissions,0
+2002,CO2,Industrial processes,Mineral,32186.452925853
+2002,CO2,Industrial processes,Chemical,1018.5
+2002,CO2,Industrial processes,Metallurgy,4743.0804
+2002,CO2,Agricuture,Fermentation,0
+2002,CO2,Agricuture,Manure,0
+2002,CO2,Agricuture,Rice farming,0
+2002,CO2,Agricuture,Soil treatment,0
+2002,CO2,Agricuture,Fires,0
+2002,CO2,Silviculture,Silviculture,45368.8072251276
+2002,CO2,Waste management,Elimination of solid waste,0
+2002,CO2,Waste management,Bio-treatment of solid waste,0
+2002,CO2,Waste management,Incineration,223.824876486
+2002,CO2,Waste management,Waste water,0
+2002,CH4,Energy,Industrial,108.2530441272
+2002,CH4,Energy,Manufacture,78.2159452417
+2002,CH4,Energy,Transport,382.4412478253
+2002,CH4,Energy,Other,1156.461747
+2002,CH4,Energy,Fugitive emissions,51355.8609544722
+2002,CH4,Industrial processes,Mineral,0
+2002,CH4,Industrial processes,Chemical,61.1550215019
+2002,CH4,Industrial processes,Metallurgy,0
+2002,CH4,Agricuture,Fermentation,36784.022001993
+2002,CH4,Agricuture,Manure,1092.871103909
+2002,CH4,Agricuture,Rice farming,131.107788
+2002,CH4,Agricuture,Soil treatment,0
+2002,CH4,Agricuture,Fires,37.9162883034
+2002,CH4,Silviculture,Silviculture,1110.1060177663
+2002,CH4,Waste management,Elimination of solid waste,12915.3540602984
+2002,CH4,Waste management,Bio-treatment of solid waste,227.4472452
+2002,CH4,Waste management,Incineration,443.9417346
+2002,CH4,Waste management,Waste water,14334.6970239193
+2002,N2O,Energy,Industrial,264.749118247
+2002,N2O,Energy,Manufacture,182.7949249033
+2002,N2O,Energy,Transport,6740.8411373918
+2002,N2O,Energy,Other,417.57527
+2002,N2O,Energy,Fugitive emissions,0
+2002,N2O,Industrial processes,Mineral,0
+2002,N2O,Industrial processes,Chemical,120.49452
+2002,N2O,Industrial processes,Metallurgy,0
+2002,N2O,Agricuture,Fermentation,0
+2002,N2O,Agricuture,Manure,6170.5775708573
+2002,N2O,Agricuture,Rice farming,0
+2002,N2O,Agricuture,Soil treatment,44640.1771874074
+2002,N2O,Agricuture,Fires,9.2353245082
+2002,N2O,Silviculture,Silviculture,112.6625452555
+2002,N2O,Waste management,Elimination of solid waste,0
+2002,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2002,N2O,Waste management,Incineration,149.0008986
+2002,N2O,Waste management,Waste water,1787.2053715574
+2003,CO2,Energy,Industrial,154403.83321638
+2003,CO2,Energy,Manufacture,54347.7029650638
+2003,CO2,Energy,Transport,114547.177626649
+2003,CO2,Energy,Other,30546.74766
+2003,CO2,Energy,Fugitive emissions,0
+2003,CO2,Industrial processes,Mineral,30822.951337058
+2003,CO2,Industrial processes,Chemical,801
+2003,CO2,Industrial processes,Metallurgy,4797.5525
+2003,CO2,Agricuture,Fermentation,0
+2003,CO2,Agricuture,Manure,0
+2003,CO2,Agricuture,Rice farming,0
+2003,CO2,Agricuture,Soil treatment,0
+2003,CO2,Agricuture,Fires,0
+2003,CO2,Silviculture,Silviculture,47978.8396368669
+2003,CO2,Waste management,Elimination of solid waste,0
+2003,CO2,Waste management,Bio-treatment of solid waste,0
+2003,CO2,Waste management,Incineration,307.419385997
+2003,CO2,Waste management,Waste water,0
+2003,CH4,Energy,Industrial,117.9964797753
+2003,CH4,Energy,Manufacture,79.4746208626
+2003,CH4,Energy,Transport,387.2528345486
+2003,CH4,Energy,Other,1160.1891945
+2003,CH4,Energy,Fugitive emissions,53142.8606973503
+2003,CH4,Industrial processes,Mineral,0
+2003,CH4,Industrial processes,Chemical,66.3242553334
+2003,CH4,Industrial processes,Metallurgy,0
+2003,CH4,Agricuture,Fermentation,36798.682292946
+2003,CH4,Agricuture,Manure,1086.4231355578
+2003,CH4,Agricuture,Rice farming,160.117062
+2003,CH4,Agricuture,Soil treatment,0
+2003,CH4,Agricuture,Fires,39.3832854626
+2003,CH4,Silviculture,Silviculture,1110.1060177663
+2003,CH4,Waste management,Elimination of solid waste,13983.3325323884
+2003,CH4,Waste management,Bio-treatment of solid waste,229.0570296
+2003,CH4,Waste management,Incineration,454.16390565
+2003,CH4,Waste management,Waste water,14556.7465556593
+2003,N2O,Energy,Industrial,280.879396638
+2003,N2O,Energy,Manufacture,187.5942009418
+2003,N2O,Energy,Transport,7203.5017954368
+2003,N2O,Energy,Other,418.96624
+2003,N2O,Energy,Fugitive emissions,0
+2003,N2O,Industrial processes,Mineral,0
+2003,N2O,Industrial processes,Chemical,111.94782
+2003,N2O,Industrial processes,Metallurgy,0
+2003,N2O,Agricuture,Fermentation,0
+2003,N2O,Agricuture,Manure,6139.0325556082
+2003,N2O,Agricuture,Rice farming,0
+2003,N2O,Agricuture,Soil treatment,44822.7845321683
+2003,N2O,Agricuture,Fires,9.592643102
+2003,N2O,Silviculture,Silviculture,112.6625452555
+2003,N2O,Waste management,Elimination of solid waste,0
+2003,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2003,N2O,Waste management,Incineration,152.14217665
+2003,N2O,Waste management,Waste water,1792.1236309439
+2004,CO2,Energy,Industrial,151658.107890003
+2004,CO2,Energy,Manufacture,61822.1876497979
+2004,CO2,Energy,Transport,129823.568495914
+2004,CO2,Energy,Other,31318.133385
+2004,CO2,Energy,Fugitive emissions,0
+2004,CO2,Industrial processes,Mineral,38661.935091355
+2004,CO2,Industrial processes,Chemical,1020
+2004,CO2,Industrial processes,Metallurgy,4801.065
+2004,CO2,Agricuture,Fermentation,0
+2004,CO2,Agricuture,Manure,0
+2004,CO2,Agricuture,Rice farming,0
+2004,CO2,Agricuture,Soil treatment,0
+2004,CO2,Agricuture,Fires,0
+2004,CO2,Silviculture,Silviculture,49509.7734951693
+2004,CO2,Waste management,Elimination of solid waste,0
+2004,CO2,Waste management,Bio-treatment of solid waste,0
+2004,CO2,Waste management,Incineration,306.4266334183
+2004,CO2,Waste management,Waste water,0
+2004,CH4,Energy,Industrial,124.9199724927
+2004,CH4,Energy,Manufacture,83.7377329051
+2004,CH4,Energy,Transport,434.6505963191
+2004,CH4,Energy,Other,1160.0376081
+2004,CH4,Energy,Fugitive emissions,52210.9838256031
+2004,CH4,Industrial processes,Mineral,0
+2004,CH4,Industrial processes,Chemical,70.3407973153
+2004,CH4,Industrial processes,Metallurgy,0
+2004,CH4,Agricuture,Fermentation,36616.22685084
+2004,CH4,Agricuture,Manure,1087.8644527123
+2004,CH4,Agricuture,Rice farming,167.1236112
+2004,CH4,Agricuture,Soil treatment,0
+2004,CH4,Agricuture,Fires,40.3287045119
+2004,CH4,Silviculture,Silviculture,1110.1060177663
+2004,CH4,Waste management,Elimination of solid waste,15156.1046541917
+2004,CH4,Waste management,Bio-treatment of solid waste,227.6943228
+2004,CH4,Waste management,Incineration,454.2775692
+2004,CH4,Waste management,Waste water,15025.588651795
+2004,N2O,Energy,Industrial,246.050534868
+2004,N2O,Energy,Manufacture,199.0805585665
+2004,N2O,Energy,Transport,8815.1801369898
+2004,N2O,Energy,Other,420.45269
+2004,N2O,Energy,Fugitive emissions,0
+2004,N2O,Industrial processes,Mineral,0
+2004,N2O,Industrial processes,Chemical,111.07734
+2004,N2O,Industrial processes,Metallurgy,0
+2004,N2O,Agricuture,Fermentation,0
+2004,N2O,Agricuture,Manure,6179.9122152478
+2004,N2O,Agricuture,Rice farming,0
+2004,N2O,Agricuture,Soil treatment,45142.906984765
+2004,N2O,Agricuture,Fires,0
+2004,N2O,Silviculture,Silviculture,9.8229201704
+2004,N2O,Waste management,Elimination of solid waste,112.6625452555
+2004,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2004,N2O,Waste management,Incineration,152.2118972
+2004,N2O,Waste management,Waste water,1812.8885045164
+2005,CO2,Energy,Industrial,157024.599531321
+2005,CO2,Energy,Manufacture,59225.9855851925
+2005,CO2,Energy,Transport,126203.142558599
+2005,CO2,Energy,Other,30194.69871
+2005,CO2,Energy,Fugitive emissions,0
+2005,CO2,Industrial processes,Mineral,32395.477605293
+2005,CO2,Industrial processes,Chemical,769.5
+2005,CO2,Industrial processes,Metallurgy,4979.2616
+2005,CO2,Agricuture,Fermentation,0
+2005,CO2,Agricuture,Manure,0
+2005,CO2,Agricuture,Rice farming,0
+2005,CO2,Agricuture,Soil treatment,0
+2005,CO2,Agricuture,Fires,0
+2005,CO2,Silviculture,Silviculture,51042.5867840317
+2005,CO2,Waste management,Elimination of solid waste,0
+2005,CO2,Waste management,Bio-treatment of solid waste,0
+2005,CO2,Waste management,Incineration,311.0181918221
+2005,CO2,Waste management,Waste water,0
+2005,CH4,Energy,Industrial,121.9828052541
+2005,CH4,Energy,Manufacture,91.1067962664
+2005,CH4,Energy,Transport,404.1292997988
+2005,CH4,Energy,Other,1158.6580446
+2005,CH4,Energy,Fugitive emissions,60187.4105466774
+2005,CH4,Industrial processes,Mineral,0
+2005,CH4,Industrial processes,Chemical,68.0107685068
+2005,CH4,Industrial processes,Metallurgy,0
+2005,CH4,Agricuture,Fermentation,36274.634324586
+2005,CH4,Agricuture,Manure,1085.3414042382
+2005,CH4,Agricuture,Rice farming,170.108064
+2005,CH4,Agricuture,Soil treatment,0
+2005,CH4,Agricuture,Fires,42.8054108503
+2005,CH4,Silviculture,Silviculture,1110.1060177663
+2005,CH4,Waste management,Elimination of solid waste,16253.091396615
+2005,CH4,Waste management,Bio-treatment of solid waste,228.38256
+2005,CH4,Waste management,Incineration,463.4877975
+2005,CH4,Waste management,Waste water,14947.5077904493
+2005,N2O,Energy,Industrial,286.133173191
+2005,N2O,Energy,Manufacture,210.6772806219
+2005,N2O,Energy,Transport,9162.2804344659
+2005,N2O,Energy,Other,417.0151
+2005,N2O,Energy,Fugitive emissions,0
+2005,N2O,Industrial processes,Mineral,0
+2005,N2O,Industrial processes,Chemical,116.9196
+2005,N2O,Industrial processes,Metallurgy,0
+2005,N2O,Agricuture,Fermentation,0
+2005,N2O,Agricuture,Manure,6158.9230858908
+2005,N2O,Agricuture,Rice farming,0
+2005,N2O,Agricuture,Soil treatment,45003.5057646695
+2005,N2O,Agricuture,Fires,10.4261750714
+2005,N2O,Silviculture,Silviculture,112.6625452555
+2005,N2O,Waste management,Elimination of solid waste,0
+2005,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2005,N2O,Waste management,Incineration,155.6904475
+2005,N2O,Waste management,Waste water,1827.862528314
+2006,CO2,Energy,Industrial,154777.540839675
+2006,CO2,Energy,Manufacture,60973.9920117222
+2006,CO2,Energy,Transport,134126.518833713
+2006,CO2,Energy,Other,30505.69896
+2006,CO2,Energy,Fugitive emissions,0
+2006,CO2,Industrial processes,Mineral,38283.355271484
+2006,CO2,Industrial processes,Chemical,888
+2006,CO2,Industrial processes,Metallurgy,5164.2248
+2006,CO2,Agricuture,Fermentation,0
+2006,CO2,Agricuture,Manure,0
+2006,CO2,Agricuture,Rice farming,0
+2006,CO2,Agricuture,Soil treatment,0
+2006,CO2,Agricuture,Fires,0
+2006,CO2,Silviculture,Silviculture,50475.016673334
+2006,CO2,Waste management,Elimination of solid waste,0
+2006,CO2,Waste management,Bio-treatment of solid waste,0
+2006,CO2,Waste management,Incineration,314.2672211068
+2006,CO2,Waste management,Waste water,0
+2006,CH4,Energy,Industrial,137.6025549486
+2006,CH4,Energy,Manufacture,85.7707913858
+2006,CH4,Energy,Transport,419.4575295996
+2006,CH4,Energy,Other,1151.4535725
+2006,CH4,Energy,Fugitive emissions,66837.0500815693
+2006,CH4,Industrial processes,Mineral,0
+2006,CH4,Industrial processes,Chemical,69.6182963472
+2006,CH4,Industrial processes,Metallurgy,0
+2006,CH4,Agricuture,Fermentation,36431.31068115
+2006,CH4,Agricuture,Manure,1086.1079785533
+2006,CH4,Agricuture,Rice farming,187.790106
+2006,CH4,Agricuture,Soil treatment,0
+2006,CH4,Agricuture,Fires,41.4995625793
+2006,CH4,Silviculture,Silviculture,1110.1060177663
+2006,CH4,Waste management,Elimination of solid waste,17280.8634134174
+2006,CH4,Waste management,Bio-treatment of solid waste,230.5406292
+2006,CH4,Waste management,Incineration,468.20017335
+2006,CH4,Waste management,Waste water,16602.2601047173
+2006,N2O,Energy,Industrial,273.741187249
+2006,N2O,Energy,Manufacture,195.8555815224
+2006,N2O,Energy,Transport,10144.9964235532
+2006,N2O,Energy,Other,415.8743
+2006,N2O,Energy,Fugitive emissions,0
+2006,N2O,Industrial processes,Mineral,0
+2006,N2O,Industrial processes,Chemical,132.7575
+2006,N2O,Industrial processes,Metallurgy,0
+2006,N2O,Agricuture,Fermentation,0
+2006,N2O,Agricuture,Manure,6194.6719626766
+2006,N2O,Agricuture,Rice farming,0
+2006,N2O,Agricuture,Soil treatment,45048.3764779144
+2006,N2O,Agricuture,Fires,10.1081077425
+2006,N2O,Silviculture,Silviculture,112.6625452555
+2006,N2O,Waste management,Elimination of solid waste,0
+2006,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2006,N2O,Waste management,Incineration,157.29576235
+2006,N2O,Waste management,Waste water,1881.4764380385
+2007,CO2,Energy,Industrial,156212.770154826
+2007,CO2,Energy,Manufacture,64642.9258931577
+2007,CO2,Energy,Transport,147420.423499557
+2007,CO2,Energy,Other,33010.595805
+2007,CO2,Energy,Fugitive emissions,0
+2007,CO2,Industrial processes,Mineral,35194.873896747
+2007,CO2,Industrial processes,Chemical,1140
+2007,CO2,Industrial processes,Metallurgy,5097.7185
+2007,CO2,Agricuture,Fermentation,0
+2007,CO2,Agricuture,Manure,0
+2007,CO2,Agricuture,Rice farming,0
+2007,CO2,Agricuture,Soil treatment,0
+2007,CO2,Agricuture,Fires,0
+2007,CO2,Silviculture,Silviculture,50780.5376187353
+2007,CO2,Waste management,Elimination of solid waste,
+2007,CO2,Waste management,Bio-treatment of solid waste,
+2007,CO2,Waste management,Incineration,326.7969344668
+2007,CO2,Waste management,Waste water,
+2007,CH4,Energy,Industrial,148.7234538741
+2007,CH4,Energy,Manufacture,86.9708434564
+2007,CH4,Energy,Transport,451.685434867
+2007,CH4,Energy,Other,1149.3728862
+2007,CH4,Energy,Fugitive emissions,70671.7961613188
+2007,CH4,Industrial processes,Mineral,0
+2007,CH4,Industrial processes,Chemical,66.2384187222
+2007,CH4,Industrial processes,Metallurgy,0
+2007,CH4,Agricuture,Fermentation,36725.675736414
+2007,CH4,Agricuture,Manure,1087.8349974718
+2007,CH4,Agricuture,Rice farming,183.982344
+2007,CH4,Agricuture,Soil treatment,0
+2007,CH4,Agricuture,Fires,43.119985087
+2007,CH4,Silviculture,Silviculture,1110.1060177663
+2007,CH4,Waste management,Elimination of solid waste,18303.4758155887
+2007,CH4,Waste management,Bio-treatment of solid waste,232.5728748
+2007,CH4,Waste management,Incineration,493.51565445
+2007,CH4,Waste management,Waste water,16859.2051635442
+2007,N2O,Energy,Industrial,273.183548864
+2007,N2O,Energy,Manufacture,199.0875700924
+2007,N2O,Energy,Transport,11506.749318711
+2007,N2O,Energy,Other,421.57117
+2007,N2O,Energy,Fugitive emissions,0
+2007,N2O,Industrial processes,Mineral,0
+2007,N2O,Industrial processes,Chemical,132.1716
+2007,N2O,Industrial processes,Metallurgy,0
+2007,N2O,Agricuture,Fermentation,0
+2007,N2O,Agricuture,Manure,6245.0186977375
+2007,N2O,Agricuture,Rice farming,0
+2007,N2O,Agricuture,Soil treatment,45339.2122744516
+2007,N2O,Agricuture,Fires,10.5027963676
+2007,N2O,Silviculture,Silviculture,112.6625452555
+2007,N2O,Waste management,Elimination of solid waste,0
+2007,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2007,N2O,Waste management,Incineration,165.91971745
+2007,N2O,Waste management,Waste water,1915.5525405315
+2008,CO2,Energy,Industrial,153800.828682408
+2008,CO2,Energy,Manufacture,61078.2695854641
+2008,CO2,Energy,Transport,166496.594780961
+2008,CO2,Energy,Other,33867.881025
+2008,CO2,Energy,Fugitive emissions,0
+2008,CO2,Industrial processes,Mineral,36014.529785753
+2008,CO2,Industrial processes,Chemical,1347
+2008,CO2,Industrial processes,Metallurgy,5177.0417
+2008,CO2,Agricuture,Fermentation,0
+2008,CO2,Agricuture,Manure,0
+2008,CO2,Agricuture,Rice farming,0
+2008,CO2,Agricuture,Soil treatment,0
+2008,CO2,Agricuture,Fires,0
+2008,CO2,Silviculture,Silviculture,48924.886045621
+2008,CO2,Waste management,Elimination of solid waste,
+2008,CO2,Waste management,Bio-treatment of solid waste,
+2008,CO2,Waste management,Incineration,551.3438851042
+2008,CO2,Waste management,Waste water,
+2008,CH4,Energy,Industrial,156.5463743466
+2008,CH4,Energy,Manufacture,87.9204234721
+2008,CH4,Energy,Transport,511.3411568213
+2008,CH4,Energy,Other,1147.0433331
+2008,CH4,Energy,Fugitive emissions,79204.7426576178
+2008,CH4,Industrial processes,Mineral,0
+2008,CH4,Industrial processes,Chemical,69.088975088
+2008,CH4,Industrial processes,Metallurgy,0
+2008,CH4,Agricuture,Fermentation,37111.51518858
+2008,CH4,Agricuture,Manure,1092.0228211442
+2008,CH4,Agricuture,Rice farming,134.477238
+2008,CH4,Agricuture,Soil treatment,0
+2008,CH4,Agricuture,Fires,42.337294301
+2008,CH4,Silviculture,Silviculture,1110.1060177663
+2008,CH4,Waste management,Elimination of solid waste,19535.397164901
+2008,CH4,Waste management,Bio-treatment of solid waste,235.2294
+2008,CH4,Waste management,Incineration,485.3565171
+2008,CH4,Waste management,Waste water,17407.1007501062
+2008,N2O,Energy,Industrial,297.996055535
+2008,N2O,Energy,Manufacture,197.0949581049
+2008,N2O,Energy,Transport,13335.8301491204
+2008,N2O,Energy,Other,422.47141
+2008,N2O,Energy,Fugitive emissions,0
+2008,N2O,Industrial processes,Mineral,0
+2008,N2O,Industrial processes,Chemical,131.5857
+2008,N2O,Industrial processes,Metallurgy,0
+2008,N2O,Agricuture,Fermentation,0
+2008,N2O,Agricuture,Manure,6299.4764148694
+2008,N2O,Agricuture,Rice farming,0
+2008,N2O,Agricuture,Soil treatment,45301.2165788072
+2008,N2O,Agricuture,Fires,10.3121552548
+2008,N2O,Silviculture,Silviculture,112.6625452555
+2008,N2O,Waste management,Elimination of solid waste,0
+2008,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2008,N2O,Waste management,Incineration,163.1402311
+2008,N2O,Waste management,Waste water,1933.1901309453
+2009,CO2,Energy,Industrial,159906.990410459
+2009,CO2,Energy,Manufacture,55919.057136828
+2009,CO2,Energy,Transport,152188.466220797
+2009,CO2,Energy,Other,32411.21466
+2009,CO2,Energy,Fugitive emissions,0
+2009,CO2,Industrial processes,Mineral,34458.994529892
+2009,CO2,Industrial processes,Chemical,1185
+2009,CO2,Industrial processes,Metallurgy,4320.5139
+2009,CO2,Agricuture,Fermentation,0
+2009,CO2,Agricuture,Manure,0
+2009,CO2,Agricuture,Rice farming,0
+2009,CO2,Agricuture,Soil treatment,0
+2009,CO2,Agricuture,Fires,0
+2009,CO2,Silviculture,Silviculture,47410.1303559182
+2009,CO2,Waste management,Elimination of solid waste,
+2009,CO2,Waste management,Bio-treatment of solid waste,
+2009,CO2,Waste management,Incineration,559.9258333178
+2009,CO2,Waste management,Waste water,
+2009,CH4,Energy,Industrial,162.266097357
+2009,CH4,Energy,Manufacture,78.9029555997
+2009,CH4,Energy,Transport,470.9781874323
+2009,CH4,Energy,Other,1139.2872918
+2009,CH4,Energy,Fugitive emissions,84213.4882991048
+2009,CH4,Industrial processes,Mineral,0
+2009,CH4,Industrial processes,Chemical,70.7055491549
+2009,CH4,Industrial processes,Metallurgy,0
+2009,CH4,Agricuture,Fermentation,37635.18116904
+2009,CH4,Agricuture,Manure,1100.4511666325
+2009,CH4,Agricuture,Rice farming,156.864666
+2009,CH4,Agricuture,Soil treatment,0
+2009,CH4,Agricuture,Fires,40.4202909342
+2009,CH4,Silviculture,Silviculture,1110.1060177663
+2009,CH4,Waste management,Elimination of solid waste,20851.3351871223
+2009,CH4,Waste management,Bio-treatment of solid waste,245.3942988
+2009,CH4,Waste management,Incineration,492.9949206
+2009,CH4,Waste management,Waste water,17686.0271864958
+2009,N2O,Energy,Industrial,445.165127245
+2009,N2O,Energy,Manufacture,181.1351965598
+2009,N2O,Energy,Transport,12514.6491008244
+2009,N2O,Energy,Other,416.76462
+2009,N2O,Energy,Fugitive emissions,0
+2009,N2O,Industrial processes,Mineral,0
+2009,N2O,Industrial processes,Chemical,130.9998
+2009,N2O,Industrial processes,Metallurgy,0
+2009,N2O,Agricuture,Fermentation,0
+2009,N2O,Agricuture,Manure,6378.7629581336
+2009,N2O,Agricuture,Rice farming,0
+2009,N2O,Agricuture,Soil treatment,0
+2009,N2O,Agricuture,Fires,9.8452280061
+2009,N2O,Silviculture,Silviculture,112.6625452555
+2009,N2O,Waste management,Elimination of solid waste,0
+2009,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2009,N2O,Waste management,Incineration,165.7423246
+2009,N2O,Waste management,Waste water,1937.9706110764
+2010,CO2,Energy,Industrial,162232.413919153
+2010,CO2,Energy,Manufacture,56488.6002263955
+2010,CO2,Energy,Transport,153384.50606962
+2010,CO2,Energy,Other,33024.673605
+2010,CO2,Energy,Fugitive emissions,0
+2010,CO2,Industrial processes,Mineral,35233.7082732723
+2010,CO2,Industrial processes,Chemical,1348.5
+2010,CO2,Industrial processes,Metallurgy,5499.229
+2010,CO2,Agricuture,Fermentation,0
+2010,CO2,Agricuture,Manure,0
+2010,CO2,Agricuture,Rice farming,0
+2010,CO2,Agricuture,Soil treatment,0
+2010,CO2,Agricuture,Fires,0
+2010,CO2,Silviculture,Silviculture,45669.6435270232
+2010,CO2,Waste management,Elimination of solid waste,
+2010,CO2,Waste management,Bio-treatment of solid waste,
+2010,CO2,Waste management,Incineration,569.3568301794
+2010,CO2,Waste management,Waste water,
+2010,CH4,Energy,Industrial,163.9390218942
+2010,CH4,Energy,Manufacture,78.5333084883
+2010,CH4,Energy,Transport,469.6972968629
+2010,CH4,Energy,Other,1134.0443856
+2010,CH4,Energy,Fugitive emissions,83119.7721573818
+2010,CH4,Industrial processes,Mineral,0
+2010,CH4,Industrial processes,Chemical,69.9527071233
+2010,CH4,Industrial processes,Metallurgy,0
+2010,CH4,Agricuture,Fermentation,37961.494856208
+2010,CH4,Agricuture,Manure,1105.9769426654
+2010,CH4,Agricuture,Rice farming,137.751138
+2010,CH4,Agricuture,Soil treatment,0
+2010,CH4,Agricuture,Fires,41.7703438961
+2010,CH4,Silviculture,Silviculture,1110.1060177663
+2010,CH4,Waste management,Elimination of solid waste,22117.7400655388
+2010,CH4,Waste management,Bio-treatment of solid waste,249.697644
+2010,CH4,Waste management,Incineration,501.8257881
+2010,CH4,Waste management,Waste water,18454.1248700822
+2010,N2O,Energy,Industrial,572.893828697
+2010,N2O,Energy,Manufacture,173.6856798103
+2010,N2O,Energy,Transport,12557.7532905692
+2010,N2O,Energy,Other,417.11895
+2010,N2O,Energy,Fugitive emissions,0
+2010,N2O,Industrial processes,Mineral,0
+2010,N2O,Industrial processes,Chemical,130.4139
+2010,N2O,Industrial processes,Metallurgy,0
+2010,N2O,Agricuture,Fermentation,0
+2010,N2O,Agricuture,Manure,6447.4961904728
+2010,N2O,Agricuture,Rice farming,0
+2010,N2O,Agricuture,Soil treatment,46479.7585913414
+2010,N2O,Agricuture,Fires,10.1740623347
+2010,N2O,Silviculture,Silviculture,112.6625452555
+2010,N2O,Waste management,Elimination of solid waste,0
+2010,N2O,Waste management,Bio-treatment of solid waste,127.0566
+2010,N2O,Waste management,Incineration,168.7506421
+2010,N2O,Waste management,Waste water,
