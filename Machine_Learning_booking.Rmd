@@ -71,10 +71,17 @@ dt_month_year_ts <- data_no_canceled %>%
   group_by(arrival_date_month, arrival_date_year) %>% 
   summarise(Recuento = n())
 
+dt_2016_all <- data_no_canceled %>%
+  filter(arrival_date_year == 2016) %>% 
+  group_by(arrival_date_month)
 
-# dt_2016_all$new_date <- as.Date(paste(dt_2016_all$arrival_date_day_of_month, "-", dt_2016_all$arrival_date_month, "-", dt_2016_all$arrival_date_year), c("%d - %B - %Y"), Sys.setlocale("LC_TIME", "English"))
 
+Sys.setlocale("LC_TIME", "english")
+ 
+dt_2016_all$new_date <- as.Date(paste(dt_2016_all$arrival_date_day_of_month, "-", dt_2016_all$arrival_date_month, "-", dt_2016_all$arrival_date_year), c("%d - %B - %Y"))
 
+ 
+ 
 ```
 
 
