@@ -97,46 +97,14 @@ Sys.setlocale ("LC_TIME", 'English')
 data_acre$new_date <- as.Date(paste("01", "-", data_acre$month, "-", data_acre$year), c("%d - %B - %Y"))
 
 data_acre_simplif <- data_acre %>% 
-  select(number, new_date)
+  select(number, new_date) %>% 
+  arrange(new_date)
 
 
-tsData_acre <- ts(data_acre_simplif$new_date, start = c(1998,1), frequency = 12)
-plot(tsData_acre,)
-
+tsData_acre <- ts(data_acre_simplif$number, start = c(1998,1), frequency = 12)
 componentes_ts = decompose(tsData_acre)
 plot(componentes_ts)
 
-
-```
-
-
-
-```{r}
-
-# FILTRO POR ESTADO ACRE Y AÑO 2015
-
-library(zoo)
-
-data_acre_2015_2016 <- data_acre[data_acre$year==2015 | data_acre$year==2016,]
-
-Sys.setlocale ("LC_TIME", 'English')
-data_acre_2015_2016$new_date <- as.Date(paste("01", "-", data_acre_2015_2016$month, "-", data_acre_2015_2016$year), c("%d - %B - %Y"))
-
-data_acre_2015_2016_simplif <- data_acre_2015_2016 %>% 
-  select(number, new_date)
-
-data_acre_2015_2016_simplif_arrange <- data_acre_2015_2016_simplif %>%
-   arrange(new_date)
-
-tsData_2015_2016 <- ts(data_acre_2015_2016_simplif_arrange$number, start = c(2015,1), frequency = 12)
-plot(tsData_2015_2016)
-
-plot(data_acre_2015_2016_simplif$number)
-
-
-```
-
-```{r, fig.align='center', warning=FALSE}
 
 # PRUEBA CON LA LIBRERÍA XTS QUE ES MÁS COMPLETA
 
@@ -144,10 +112,8 @@ library(xts)
 library(timeSeries)
 
 
-x <- timeSeries(data_acre_2015_simplif$number, data_acre_2015_simplif$new_date)
-
+x <- timeSeries(data_acre_2015_2016_simplif$number, data_acre_2015_2016_simplif$new_date)
 matrix_xts <- as.xts(x)
-
 str(matrix_xts)
 plot(matrix_xts[,1])
 
@@ -176,6 +142,12 @@ plot(tsstationary)
 
 acf(tsstationary, lag.max=140)
 pacf(tsstationary, lag.max=140)
+
+library(lmtest)
+fitARIMA <- arima(tsData_acre, order=c(1,1,1),seasonal = list(order = c(1,0,0), period = 12),method="ML")
+fitARIMA
+coeftest(fitARIMA)
+confint(fitARIMA)
 
 ```
 
