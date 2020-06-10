@@ -13,30 +13,34 @@ library(normtest)
 library(lmtest)
 
 # install.packages("lmtest")
-
+Sys.setlocale ("LC_TIME", 'English')
 data <- read.csv("amazon.csv")
+
 
 data_rio <- data %>%
   filter(state == "Rio") %>% 
   select(year, month, number) %>% 
-  mutate(month = if_else(month == "Abril", "April", 
-                 if_else(month == "Agosto", "August", 
-                 if_else(month == "Dezembro", "December", 
-                 if_else(month == "Fevereiro", "February", 
-                 if_else(month == "Janeiro", "January", 
-                 if_else(month == "Julho", "July", 
-                 if_else(month == "Junho", "June", 
+  mutate(month = if_else(month == "Abril", "Apr", 
+                 if_else(month == "Agosto", "Aug", 
+                 if_else(month == "Dezembro", "Dec", 
+                 if_else(month == "Fevereiro", "Feb", 
+                 if_else(month == "Janeiro", "Jan", 
+                 if_else(month == "Julho", "Jul", 
+                 if_else(month == "Junho", "Jun", 
                  if_else(month == "Maio", "May", 
-                 if_else(month == "Setembro", "September", 
-                 if_else(month == "Novembro", "November", 
-                 if_else(month == "Outubro", "October", "March")))))))))))) %>% 
-  
-  group_by(year, month) %>% 
-  summarise(total = sum(as.integer(number)))
+                 if_else(month == "Setembro", "Sep", 
+                 if_else(month == "Novembro", "Nov",  
+                 if_else(month == "Outubro", "Oct", "Mar")))))))))))) %>% 
+  mutate(new_date = as.yearmon(paste(month, "-", year), "%B - %Y")) %>% 
+  group_by(new_date) %>%
+  summarise(total = sum(as.integer(number))) %>% 
+  mutate(new_quarter = quarter(data_rio$new_date, with_year = TRUE)) %>%
+  group_by(new_quarter) %>%
+  summarise(total_quarter = sum(as.integer(total)))
 
 
-ts_data_rio <- ts(data_rio$total, start = c(1998,1), frequency = 12)
-fires_rio <- as_tsibble(ts_data_rio, index = new_date)
+ts_data_rio <- ts(data_rio$total_quarter, start = c(1998,1), frequency = 4)
+fires_rio <- as_tsibble(ts_data_rio, index = new_quarter)
 
 fires_rio %>%
   autoplot(value) +
@@ -51,14 +55,15 @@ fires_train %>%
   gg_season(value, labels = "right")
 
 fires_train %>%
-  model(seats = feasts:::SEATS(value)) %>%
+  model(seats = feasts:::STL(value)) %>%
   components() %>%
   autoplot()
 
 #### Estacionariedad en varianza: para estabilizar la varianza. ####
 
 lambda <- fires_train %>%
-  features(value, features = guerrero) %>% pull(lambda_guerrero)
+  features(value, features = guerrero) %>% 
+  pull(lambda_guerrero)
 lambda # lambda próximo a cero -> transformacion log
 
 fires_train %>% autoplot(log(value)) +
@@ -102,4 +107,4 @@ fitARIMA <- arima(fires_train,
 
 
 
-coeftest(fitARIMA)
+coeftest(fitARIMA) 
