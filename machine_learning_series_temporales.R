@@ -11,8 +11,10 @@ library(fpp3)
 library(GGally)
 library(normtest)
 library(lmtest)
+library(urca)
 
 # install.packages("lmtest")
+# install.packages("urca")
 Sys.setlocale ("LC_TIME", 'English')
 data <- read.csv("amazon.csv")
 
@@ -34,7 +36,7 @@ data_rio <- data %>%
   mutate(new_date = as.yearmon(paste(month, "-", year), "%B - %Y")) %>% 
   group_by(new_date) %>%
   summarise(total = sum(as.integer(number))) %>% 
-  mutate(new_quarter = quarter(data_rio$new_date, with_year = TRUE)) %>%
+  mutate(new_quarter = quarter(new_date, with_year = TRUE)) %>%
   group_by(new_quarter) %>%
   summarise(total_quarter = sum(as.integer(total)))
 
@@ -100,11 +102,42 @@ pacf(fires_train, lag.max=140)
 
 #### Determinación del modelo ####
 
-fitARIMA <- arima(fires_train, 
+fitARIMA <- arima(fires_train$value, 
                   order=c(1,1,1), 
-                  seasonal = list(order = c(1,0,0), period = 12), 
+                  seasonal = list(order = c(1,0,0), period = 4), 
                   method="ML")
 
 
 
 coeftest(fitARIMA) 
+
+### Fase de estimación y contraste ###
+
+my_tsresiduals <- function (data, ...) {
+  if (!fabletools::is_mable(data)) {
+    abort("gg_tsresiduals() must be used with a mable containing only one model.")
+  }
+  data <- stats::residuals(data)
+  if (n_keys(data) > 1) {
+    abort("gg_tsresiduals() must be used with a mable containing only one model.")
+  }
+  gg_tsdisplay(data, !!sym(".resid"), plot_type = "partial",  
+               ...)
+}
+
+fit2 <- fires_train %>%
+  model(arima = ARIMA(value ~ pdq(0,1,0) + PDQ(1,1,0, period= 7)))
+fit2 %>% my_tsresiduals(lag_max =36)
+report(fit2)
+
+fit3 <- fires_train %>%
+  model(arima = ARIMA(value ~ pdq(0,1,0) + PDQ(1,1,1)))
+fit3 %>% my_tsresiduals(lag_max =36)
+report(fit3)
+
+
+fit4 <- fires_train %>%
+  model(arima = ARIMA(value ~ pdq(0,1,2) + PDQ(1,1,1)))
+fit4 %>% my_tsresiduals(lag_max =36)
+report(fit4)
+
