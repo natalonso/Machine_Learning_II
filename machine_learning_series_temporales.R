@@ -15,6 +15,7 @@ library(urca)
 
 # install.packages("lmtest")
 # install.packages("urca")
+setwd("C:/Users/susi_/Desktop/Machine Learning2/Series_Temporales/practica_local")
 Sys.setlocale ("LC_TIME", 'English')
 data <- read.csv("amazon.csv")
 
@@ -56,6 +57,13 @@ fires_test <- fires_rio %>% filter_index(2016 ~ .)
 fires_train %>%
   gg_season(value, labels = "right")
 
+#Gráfica por trimestres:
+fires_train %>% gg_subseries(value, labels = "right")
+
+#Gráficos de retardo:
+
+fires_train %>% gg_lag(value, geom="point")
+
 fires_train %>%
   model(seats = feasts:::STL(value)) %>%
   components() %>%
@@ -96,9 +104,11 @@ fires_train %>%
 
 # estimate of the autocorrelation function of a (possibly multivariate) time series: ACF
 acf(fires_train,lag.max=140)
+fires_train %>% ACF(value, lag_max = 140) %>% autoplot()
 
 # estimate of the partial autocorrelation function of a (possibly multivariate) time series: PACF
 pacf(fires_train, lag.max=140)
+fires_train %>% PACF(value, lag_max = 140) %>% autoplot()
 
 #### Determinación del modelo ####
 
