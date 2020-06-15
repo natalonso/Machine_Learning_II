@@ -4,36 +4,34 @@ DUDAS:
 ################
 
 -¿Cómo saber que transformaciones son necesarias?
+
 -En la parte de propiedades de la ts, estacionariedad, estacionalidad, etc, cómo interpretarlo para tomar la decisión de las transformaciones.
+
 -Nos da lambda próximo a cero, que parece que implica transf. log. sin embargo luego al analizar la estabilidad en media al aplicar una trans. log. nos da NA
+
 -Al hacer los autoplot tanto sobre la dif. del log. como sobre dif. del value da un warning:
 Warning message:
 Removed 1 row(s) containing missing values (geom_path). 
 
--Cómo calcular el lag.max para las funciones de autocorrelación (acf, pacf) en función de nuestros datos
+-Cómo calcular el lag.max para las funciones de autocorrelación (acf, pacf) en función de nuestros datos: > ACF y mirar los máximos para cada retardo
 
 lag.max: maximum lag at which to calculate the acf. Default is 10∗log10(N/m) where N is the number of observations and m the number of series. Will be automatically limited to one less than the number of observations in the series.
 
--Para ajustar el modelo hay que establecer los valores p, d, q, cómo podemos establecerlos??
+
+-Para ajustar el modelo hay que establecer los valores p, d, q, cómo podemos establecerlos?? en qué basarnos para tomar esta decisión??
     p: orden del proceso autoregresivo 
     d: número de diferencias necesarias para que el proceso sea estacionario
     q: orden del proceso de medias móviles
 
 
 
-################
-IDEAS:
-################
 
-# comprobar tendencia, estacionariedad y correlación.
-# No tiene que tener tendencia y tiene que haber estacionariedad en media y varianza.
 
-# Para eliminar la tendencia se puede aplicar una diferencia 
-# series estacionaria ~ estabilidad: cuando la media y la variabilidad se mantienen constantes a lo largo del tiempo.
-# estacional ~ periodicidad.
+Condiciones de la serie:
 
-# Parece que nuestra series es estacional (periodica) y estacionaria (media y varianza cte). Se comprueba con los test
-# Al hacer el test de raiz unitaria para comprobar si es estacionaria en media el pvalor da 0,1 > 0.05, aceptamos h0, aceptamos que es estacionaria en media.
+-Estacionariedad en media, en varianza, que haya autocorrelacion (y luego establecer el retardo máximo)
+-Estacionariedad (serie temporal estable, media y var cte) / escionalidad (patrones ciclicos)
+-Tendencia: eliminar: puede ser una diferencia
 
-# Parece que lambda implica transformacion log, pero no concuerda con la estacionariedad en media.
-# 
+Transformaciones: 	-no lineales var: box-cox (log, raiz....)
+			-en media: diferencia

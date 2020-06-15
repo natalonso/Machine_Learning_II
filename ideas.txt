@@ -1,0 +1,16 @@
+
+################
+IDEAS:
+################
+
+# comprobar tendencia, estacionariedad y correlación.
+# No tiene que tener tendencia y tiene que haber estacionariedad en media y varianza.
+
+# Para eliminar la tendencia se puede aplicar una diferencia 
+# series estacionaria ~ estabilidad: cuando la media y la variabilidad se mantienen constantes a lo largo del tiempo.
+# estacional ~ periodicidad.
+
+# Parece que nuestra series es estacional (periodica) y estacionaria (media y varianza cte). Se comprueba con los test
+# Al hacer el test de raiz unitaria para comprobar si es estacionaria en media el pvalor da 0,1 > 0.05, aceptamos h0, aceptamos que es estacionaria en media.
+
+# Parece que lambda implica transformacion log, pero no concuerda con la estacionariedad en media.
