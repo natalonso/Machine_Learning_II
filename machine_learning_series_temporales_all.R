@@ -118,6 +118,10 @@ fires_train %>%
 # Modelo manual: SAR
 fit_manual <- fires_train %>% model(arima = ARIMA(value ~ pdq(1,0,0) + PDQ(1,0,0, period = 4)))
 
+fit_manual_1 <- fires_train %>% 
+  model(arima = ARIMA(box_cox(value, lambda) ~ pdq(1,0,0) + PDQ(1,0,0, period = 4)))
+report(fit_manual_1)
+
 fit_automatico <- fires_train %>% model(arima = ARIMA(value))
 report(fit_automatico) # coef +/- 2*es no solape el uno
 
@@ -140,14 +144,14 @@ p_value
 
 #### Análisis de residuos ####
 
-aug <-fit_manual %>% augment()
+aug <-fit_manual_1 %>% augment()
 
 aug %>%
   ggplot(aes(x = .resid)) +
   geom_histogram(bins = 50) +
   ggtitle("Histogram of residuals")
 
-residual <- stats::residuals(fit_manual)
+residual <- stats::residuals(fit_manual_1)
 gg_tsdisplay(residual,!!sym(".resid"), plot_type = "partial", lag_max = 90)
 
 # Test para la media: la media debería ser cero, para cumplir el test de normalidad: h0: media cero
@@ -181,13 +185,13 @@ shapiro.test(aug$.resid)
 #### Predicción ####
 
 # Residual accuracy
-resids <- fit_manual %>% 
+resids <- fit_manual_1 %>% 
   accuracy() %>% 
   select(-c(.model, .type, ME, MPE, ACF1 )) %>% 
   mutate(Evaluation='Training') 
 
 # Forecasting
-fc <- fit_manual %>%
+fc <- fit_manual_1 %>%
   forecast(h=8) 
 
 fc %>%
