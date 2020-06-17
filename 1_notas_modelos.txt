@@ -1,0 +1,66 @@
+
+# Serie temporal: (p,d,q) + (P,D,Q)m
+
+Parte no-seasonal: p,d,q
+Parte seasonal: (P,D,Q)m
+
+AR/SAR: proceso autoregresivo ---> p/P
+MA/SMA: medias móviles ---> q/Q
+S: seasonal ---> m/P/Q (m=1, no se diferenciaría la parte seasonal de la no-seasonal)
+
+# Posibles modelos: AR / MA / ARMA (d=0) / ARIMA (d != 0)
+		    SAR / SMA / SARMA / SARIMA
+
+p/P: parte AR/SAR -> PACF -> p: posición del primer retardo significativo / P: posicion del primer retardo significativo de los múltiplos de m
+d/D: lo que se establece como la diferencias (que se hacía como un mecanismo para eliminar la tendencia) --> viene de la i de integrated (ar+ma)
+q/Q: parte MA -> ACF ->  q: posición del primer retardo significativo / Q: posicion del primer retardo significativo de los múltiplos de m
+m: estacionalidad de la serie m=4.
+
+Para evaluar los modelos de series: AICc, criterio de información: CUANTO MENOR MEJOR
+
+# Nuestro Ejemplo:
+
+SAR: p=2/P=1 con PACF (q=0/Q=0) (d=1/D=1)
+SMA: q=2/Q=1 con ACF (p=0/P=0) (d=1/D=1)
+SARIMA p=2/P=1 con PACF; d=1/D=1; q=2/Q=1 con ACF;  (2,1,2)(1,1,1)4
+
+# problema AR: Estabilidad
+# problema MA: Invertibilidad: los coeficientes no deben solapar el uno revisar que los coef +/- 2*e.s. 
+# una vez ajustado el modelo los retardos no deben ser significativos (salirse de los umbrales)
+# variables exógenas
+# Idea extra: comparar el modelo automático (cada región de manera automática y suma) y el manual (con el acumulado de todas las regiones)
+
+#######################################
+Evaluación del modelo
+#######################################
+
+-Test de significancia de los coeficientes del modelo (ar, ma..)
+-Test de la media de los residuos (debería de ser media cero)
+-Test de autocorrelaciones de los residuos: residuos incorrelados
+-Test de homocedasticidad de los residuos: media cero de los residuos y varianza cero -> residuos son homocedásticos
+-Test de normalidad e los residuos: qqplot
+-Evaluacion con accuracy: MAE, MAE_std, MAPE, MAPE_std, RMSE, RMSE_std
+
+#######################################
+Métricas para ver el error
+#######################################
+
+res = pred - val -> diferencia entre el valor predicho y el real
+
+MAE = sum(abs(res))/length(val) = mean(abs(res))-> error absoluto medio
+MAE_std = sd(abs(res)) -> desviación típica del error absoluto
+
+MAPE = mean(100*abs(res)/val) -> error porcentual absoluto medio
+MAPE_std = sd(100*abs(res)/val) -> desviación típica del error porcentual absoluto 
+
+MSE = sum(res^2)/length(val) = mean(res^2) -> error cuadrático medio
+MSE_std = sd((res)^2) -> desviación del error cuadrático
+
+RMSE = sqrt(MSE) -> La raíz del error cuadrático medio
+RMSE_std = sqrt(MSE_std) -> raiz de la desviación del error cuadrático
+
+perf = data.frame(MAE,MAE_std,MAPE,MAPE_std,RMSE,RMSE_std)
+
+
+
+

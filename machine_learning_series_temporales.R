@@ -254,3 +254,5 @@ aug %>%  ggplot() +
 
 # Show errors together
 bind_rows(test_err, resids) %>% select(Evaluation, everything())
+
+

@@ -15,7 +15,8 @@ library(urca)
 # install.packages("lmtest")
 # install.packages("urca")
 # setwd("C:/Users/susi_/Desktop/Machine Learning2/Series_Temporales/practica_local")
-#setwd("C:/Users/Beatriz/Desktop/Máster/3er trimestre/Machine Learning II/Práctica")
+# setwd("C:/Users/Beatriz/Desktop/Máster/3er trimestre/Machine Learning II/Práctica")
+# setwd("C:/Users/natal/OneDrive/Documentos/0_Universidad/10-Máster/2_Curso_2019-2020/Tercer_Trimestre/0_Machine_Learning_2/REPO DEF")
 
 Sys.setlocale ("LC_TIME", 'English')
 data <- read.csv("amazon.csv")
@@ -25,16 +26,16 @@ data <- read.csv("amazon.csv")
 data_all <- data %>%
   select(year, month, number) %>% 
   mutate(month = if_else(month == "Abril", "Apr", 
-                         if_else(month == "Agosto", "Aug", 
-                                 if_else(month == "Dezembro", "Dec", 
-                                         if_else(month == "Fevereiro", "Feb", 
-                                                 if_else(month == "Janeiro", "Jan", 
-                                                         if_else(month == "Julho", "Jul", 
-                                                                 if_else(month == "Junho", "Jun", 
-                                                                         if_else(month == "Maio", "May", 
-                                                                                 if_else(month == "Setembro", "Sep", 
-                                                                                         if_else(month == "Novembro", "Nov",  
-                                                                                                 if_else(month == "Outubro", "Oct", "Mar")))))))))))) %>% 
+                 if_else(month == "Agosto", "Aug", 
+                 if_else(month == "Dezembro", "Dec", 
+                 if_else(month == "Fevereiro", "Feb", 
+                 if_else(month == "Janeiro", "Jan", 
+                 if_else(month == "Julho", "Jul", 
+                 if_else(month == "Junho", "Jun", 
+                 if_else(month == "Maio", "May", 
+                 if_else(month == "Setembro", "Sep", 
+                 if_else(month == "Novembro", "Nov",  
+                 if_else(month == "Outubro", "Oct", "Mar")))))))))))) %>% 
   mutate(new_date = as.yearmon(paste(month, "-", year), "%B - %Y")) %>% 
   group_by(new_date) %>%
   summarise(total = sum(as.integer(number))) %>% 
@@ -51,12 +52,12 @@ fires %>%
   labs(title = "Fires per year") +
   xlab("Year") + ylab("Fires")
 
-fires <- fires %>% filter_index("1999 Q1" ~ "2017 Q4")
+fires <- fires %>% filter_index("1999 Q1" ~ "2014 Q4")
 
 # Dividir en train y test:
 
-fires_train <- fires %>% filter_index("1999 Q1" ~ "2015 Q4")
-fires_test <- fires %>% filter_index("2016 Q1" ~ "2017 Q4")
+fires_train <- fires %>% filter_index("1999 Q1" ~ "2012 Q4")
+fires_test <- fires %>% filter_index("2013 Q1" ~ "2014 Q4")
 
 # Gráfica con todos los años:
 
@@ -115,10 +116,16 @@ fires_train %>%
 #### Determinación del modelo ####
 
 # Modelo manual: SAR
-fit_manual <- fires_train %>% model(arima = ARIMA(value ~ pdq(1,0,0) + PDQ(1,0,0, period=4)+1))
-report(fit_manual) # coef +/- 2*es no solape el uno
+fit_manual <- fires_train %>% model(arima = ARIMA(value ~ pdq(1,0,0) + PDQ(1,0,0, period = 4)))
 
-fit_automatico <- fires_train %>% model(arima = ARIMA(value)) # ajuste automático
+fit_automatico <- fires_train %>% model(arima = ARIMA(value))
+report(fit_automatico) # coef +/- 2*es no solape el uno
+
+kk <- Arima(fires_train$value, order = c(1,0,0), seasonal=list(order=c(1,0,0),period=4), lambda = 1.6)
+kk
+
+
+fit_automatico <- fires_train %>% model(arima = ARIMA(value) + lambda) # ajuste automático
 report(fit_automatico)
 
 #### Estimacion y contraste ####
@@ -133,9 +140,6 @@ p_value
 
 #### Análisis de residuos ####
 
-# Test para la media: la media debería ser cero, para cumplir el test de normalidad: h0: media cero
-# Conclusión: como p_value es "alto", se acepta que la media de los residuos es cero.
-
 aug <-fit_manual %>% augment()
 
 aug %>%
@@ -143,30 +147,11 @@ aug %>%
   geom_histogram(bins = 50) +
   ggtitle("Histogram of residuals")
 
-aug %>% 
-  ACF(.resid, lag_max = 100) %>% 
-  autoplot()
-
-aug %>% 
-  PACF(.resid, lag_max = 100) %>% 
-  autoplot()
-
 residual <- stats::residuals(fit_manual)
-gg_tsdisplay( residual,!!sym(".resid"), plot_type = "partial", lag_max = 90)
+gg_tsdisplay(residual,!!sym(".resid"), plot_type = "partial", lag_max = 90)
 
-# my_tsresiduals <- function (data, ...) {
-#   if (!fabletools::is_mable(data)) {
-#     abort("gg_tsresiduals() must be used with a mable containing only one model.")
-#   }
-#   data <- stats::residuals(data)
-#   if (n_keys(data) > 1) {
-#     abort("gg_tsresiduals() must be used with a mable containing only one model.")
-#   }
-#   gg_tsdisplay(data, !!sym(".resid"), plot_type = "partial",
-#                ...)
-# }
-# 
-# fit_manual %>% my_tsresiduals()
+# Test para la media: la media debería ser cero, para cumplir el test de normalidad: h0: media cero
+# Conclusión: como p_value es "alto", se acepta que la media de los residuos es cero.
 
 t.test(aug$.resid) 
 
@@ -180,9 +165,8 @@ aug %>% features(.resid, ljung_box, lag=8, dof=3)
 # Conclusión: p_valor "grande", aceptamos que la varianza es cero, por tanto, son homocedástico
 
 log_log <- aug %>% as_tibble() %>% 
-  group_by(week(index)) %>% 
-  summarize(mean_resid = log(mean(.resid+1)), std_resid = log(sd(.resid+1))) 
-##### CREO QUE EN LO ANTERIOR YA NO HABRÍA QUE HACER EL LOG
+  group_by(quarter(index)) %>% 
+  summarize(mean_resid = (mean(.resid+1)), std_resid = (sd(.resid+1)))
 
 summary(lm(std_resid~mean_resid, log_log))
 
@@ -190,7 +174,9 @@ summary(lm(std_resid~mean_resid, log_log))
 # Conclusión: p_value "grande" -> aceptamos que hay normalidad
 
 jb.norm.test(na.omit(aug$.resid))
-qqnorm(aug$.resid, sub="Figura 09: Gráfico Q para evaluar normalidad");qqline(aug$.resid)
+qqnorm(aug$.resid, sub="Gráfico Q para evaluar normalidad");qqline(aug$.resid)
+
+shapiro.test(aug$.resid)
 
 #### Predicción ####
 
@@ -205,18 +191,9 @@ fc <- fit_manual %>%
   forecast(h=8) 
 
 fc %>%
-  autoplot() +
-  ggtitle("Forecasts for fires in Rio") +
-  xlab("Year") +
-  guides(colour = guide_legend(title = "Forecast"))
-
-plot(fc$value, type='l', col="red")
-plot(fires_test$value, type='l', col="blue")
-
-# test_err <- fc %>% 
-#   accuracy(fires_rio) %>% 
-#   select(-c(.model, .type, ME, MPE, ACF1 )) %>% 
-#   mutate(Evaluation='Test')
+  autoplot(fires, level = NULL, col="red", lwd = 2) +
+  ggtitle("Forecasts for fires in Amazonas") +
+  xlab("Year") + ylab("Number of fires")
 
 getPerformance = function(pred, val) {
   res = pred - val
@@ -231,15 +208,19 @@ getPerformance = function(pred, val) {
   perf = data.frame(MAE,MAE_std,MAPE,MAPE_std,RMSE,RMSE_std)
 }
 
-accuracy_test <-getPerformance(fc$value,fires_test$value) %>% 
-  mutate(Evaluation='Test')
-
-
-
-#exp(fit_manual$arima[[1]]$fit$est$.fitted)
 
 accuracy_train <-getPerformance(aug$.fitted,fires_train$value) %>% 
-  mutate(Evaluation='Training') 
+  mutate(Evaluation='Train') 
+accuracy_train
+
+accuracy_test <-getPerformance(fc$value,fires_test$value) %>% 
+  mutate(Evaluation='Test')
+accuracy_test
+
+# Show errors together
+bind_rows(accuracy_train, accuracy_test) %>% select(Evaluation, everything())
+
+#exp(fit_manual$arima[[1]]$fit$est$.fitted)
 
 aug %>%  ggplot() +
   geom_line(aes(x = index, y = .fitted), color="navy") +
@@ -247,7 +228,7 @@ aug %>%  ggplot() +
   # geom_line(data=air_forecast, aes(x = index, y = value), color="red4") +
   ggtitle("SARIMA train fitted values") +
   xlab('Dates') +
-  ylab('Passengers') + facet_wrap(vars(year(index)), scales = 'free')
+  ylab('Fires') + facet_wrap(vars(year(index)), scales = 'free')
 
-# Show errors together
-bind_rows(accuracy_train, accuracy_test) %>% select(Evaluation, everything())
+
+
