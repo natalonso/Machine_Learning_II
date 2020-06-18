@@ -12,14 +12,21 @@ library(normtest)
 library(lmtest)
 library(urca)
 
-# install.packages("lmtest")
 # install.packages("urca")
+# install.packages("lmtest")
+
 # setwd("C:/Users/susi_/Desktop/Machine Learning2/Series_Temporales/practica_local")
 # setwd("C:/Users/Beatriz/Desktop/Máster/3er trimestre/Machine Learning II/Práctica")
-# setwd("C:/Users/natal/OneDrive/Documentos/0_Universidad/10-Máster/2_Curso_2019-2020/Tercer_Trimestre/0_Machine_Learning_2/REPO DEF")
+# setwd("C:/Users/natal/OneDrive/Documentos/0_Universidad/10-Master/2_Curso_2019-2020/Tercer_Trimestre/0_Machine_Learning_2/REPO DEF")
 
 Sys.setlocale ("LC_TIME", 'English')
 data <- read.csv("amazon.csv")
+
+
+###################################################
+# AJUSTE MANUAL CON FIRES ACUMULADOS
+###################################################
+
 
 #### Análisis exploratorio de la señal ####
 
@@ -115,43 +122,37 @@ fires_train %>%
 
 #### Determinación del modelo ####
 
-# Modelo manual: SAR
-fit_manual <- fires_train %>% model(arima = ARIMA(value ~ pdq(1,0,0) + PDQ(1,0,0, period = 4)))
+# Modelo manual: AR + SAR (SAR)4: pdq(1,0,0) + PDQ(1,0,0) 25/14,                
+fit_manual <- fires_train %>% model(arima = ARIMA(box_cox(value, lambda) ~ pdq(1,0,0) + PDQ(1,0,0, period = 4)))
+report(fit_manual)
 
-fit_manual_1 <- fires_train %>% 
-  model(arima = ARIMA(box_cox(value, lambda) ~ pdq(1,0,0) + PDQ(1,0,0, period = 4)))
-report(fit_manual_1)
+# Modelo manual: AR + SAR + MA + SMA (SARMA)4: pdq(1,0,1) + PDQ(1,0,1) -> 24/13 # coef no significativos
+# fit_manual <- fires_train %>% model(arima = ARIMA(box_cox(value, lambda) ~ pdq(1,0,1) + PDQ(1,0,1, period = 4)))
+# report(fit_manual)
 
-fit_automatico <- fires_train %>% model(arima = ARIMA(value))
-report(fit_automatico) # coef +/- 2*es no solape el uno
+# Modelo manual: SAR (SAR)4: pdq(0,0,0) + PDQ(1,0,0) -> 26/14
+# fit_manual <- fires_train %>% model(arima = ARIMA(box_cox(value, lambda) ~ pdq(0,0,0) + PDQ(1,0,0, period = 4)))
+# report(fit_manual)
 
-kk <- Arima(fires_train$value, order = c(1,0,0), seasonal=list(order=c(1,0,0),period=4), lambda = 1.6)
-kk
-
-
-fit_automatico <- fires_train %>% model(arima = ARIMA(value) + lambda) # ajuste automático
-report(fit_automatico)
 
 #### Estimacion y contraste ####
 
 # Si el p_valor es muy bajo -> los coeficientes son significativos:
 
 t_stat <- tidy(fit_manual)$statistic
-t_stat
-
 p_value <- tidy(fit_manual)$p.value # h0 es que el coef es 0. como p es 0, se rechaza, entonces es significativo
-p_value
+rbind(t_stat, p_value)
 
 #### Análisis de residuos ####
 
-aug <-fit_manual_1 %>% augment()
+aug <-fit_manual %>% augment()
 
 aug %>%
   ggplot(aes(x = .resid)) +
   geom_histogram(bins = 50) +
   ggtitle("Histogram of residuals")
 
-residual <- stats::residuals(fit_manual_1)
+residual <- stats::residuals(fit_manual)
 gg_tsdisplay(residual,!!sym(".resid"), plot_type = "partial", lag_max = 90)
 
 # Test para la media: la media debería ser cero, para cumplir el test de normalidad: h0: media cero
@@ -163,7 +164,7 @@ t.test(aug$.resid)
 # Conclusión: p_valor "significativo", por tanto aceptamos que los residuos son incorrelados
 # dof: grados de libertad: número de variables
 
-aug %>% features(.resid, ljung_box, lag=8, dof=3)
+aug %>% features(.resid, ljung_box, lag=8, dof=2)
 
 # Test homocedasticidad: h0: varianza cero-residuos homocedásticos
 # Conclusión: p_valor "grande", aceptamos que la varianza es cero, por tanto, son homocedástico
@@ -185,19 +186,20 @@ shapiro.test(aug$.resid)
 #### Predicción ####
 
 # Residual accuracy
-resids <- fit_manual_1 %>% 
+resids <- fit_manual %>% 
   accuracy() %>% 
   select(-c(.model, .type, ME, MPE, ACF1 )) %>% 
   mutate(Evaluation='Training') 
 
 # Forecasting
-fc <- fit_manual_1 %>%
+fc <- fit_manual %>%
   forecast(h=8) 
 
 fc %>%
   autoplot(fires, level = NULL, col="red", lwd = 2) +
   ggtitle("Forecasts for fires in Amazonas") +
   xlab("Year") + ylab("Number of fires")
+
 
 getPerformance = function(pred, val) {
   res = pred - val
@@ -213,16 +215,16 @@ getPerformance = function(pred, val) {
 }
 
 
-accuracy_train <-getPerformance(aug$.fitted,fires_train$value) %>% 
-  mutate(Evaluation='Train') 
-accuracy_train
+accuracy_train_manual <-getPerformance(aug$.fitted,fires_train$value) %>% 
+  mutate(Evaluation='Train manual') 
+accuracy_train_manual
 
-accuracy_test <-getPerformance(fc$value,fires_test$value) %>% 
-  mutate(Evaluation='Test')
-accuracy_test
+accuracy_test_manual <-getPerformance(fc$value,fires_test$value) %>% 
+  mutate(Evaluation='Test manual')
+accuracy_test_manual
 
 # Show errors together
-bind_rows(accuracy_train, accuracy_test) %>% select(Evaluation, everything())
+bind_rows(accuracy_train_manual, accuracy_test_manual) %>% select(Evaluation, everything())
 
 #exp(fit_manual$arima[[1]]$fit$est$.fitted)
 
@@ -235,4 +237,75 @@ aug %>%  ggplot() +
   ylab('Fires') + facet_wrap(vars(year(index)), scales = 'free')
 
 
+
+###################################################
+# AJUSTE AUTOMÁTICO Y COMPARACIÓN CON MANUAL
+###################################################
+
+
+regiones <- unique(data$state)
+prediccion_regiones <- data.frame()
+
+for (region in regiones){
+  data_region <- data %>%
+    filter(state == region) %>% 
+    select(year, month, number) %>% 
+    mutate(month = if_else(month == "Abril", "Apr", 
+                   if_else(month == "Agosto", "Aug", 
+                   if_else(month == "Dezembro", "Dec", 
+                   if_else(month == "Fevereiro", "Feb", 
+                   if_else(month == "Janeiro", "Jan", 
+                   if_else(month == "Julho", "Jul", 
+                   if_else(month == "Junho", "Jun", 
+                   if_else(month == "Maio", "May", 
+                   if_else(month == "Setembro", "Sep", 
+                   if_else(month == "Novembro", "Nov",  
+                   if_else(month == "Outubro", "Oct", "Mar")))))))))))) %>% 
+    
+    mutate(new_date = as.yearmon(paste(month, "-", year), "%B - %Y")) %>% 
+    group_by(new_date) %>%
+    summarise(total = sum(as.integer(number))) %>% 
+    mutate(new_quarter = quarter(new_date, with_year = TRUE)) %>%
+    group_by(new_quarter) %>%
+    summarise(total_quarter = sum(as.integer(total)))
+  
+  
+  ts_data_region<- ts(data_region$total_quarter, start = c(1998,1), frequency = 4)
+  fires_region <- as_tsibble(ts_data_region, index = new_quarter)
+
+  fires_region <- fires_region %>% filter_index("1999 Q1" ~ "2014 Q4")
+  
+  # Dividir en train y test:
+  
+  fires_train_region <- fires_region %>% filter_index("1999 Q1" ~ "2012 Q4")
+  fires_test_region <- fires_region %>% filter_index("2013 Q1" ~ "2014 Q4")
+  
+  fit_automatico_region <- fires_train_region %>% model(arima = ARIMA(value))
+  
+  fc_region <- fit_automatico_region %>%
+    forecast(h=8) 
+  
+  prediccion_regiones <- rbind(prediccion_regiones, fc_region$value)
+}
+
+colnames(prediccion_regiones) <- c("Q1 2013","Q2 2013","Q3 2013","Q4 2013","Q1 2014","Q2 2014","Q3 2014","Q4 2014")
+
+print("Número real de indencios en los 8 quarters, en todas las regiones: ")
+sum(fires_test$value)
+
+print("Predicción del número de indencios en los 8 quarters, en todas las regiones con el modelo manual: ")
+sum(fc$value)
+
+print("Predicción del número de indencios en los 8 quarters, en todas las regiones con el modelo automático: ")
+sum(prediccion_regiones)
+
+
+predioccion_regiones_all <- colSums(prediccion_regiones)
+
+accuracy_test_automatico <-getPerformance(predioccion_regiones_all,fires_test$value) %>% 
+  mutate(Evaluation='Test automatico')
+accuracy_test_automatico
+
+# Show errors together
+bind_rows(accuracy_test_manual, accuracy_test_automatico) %>% select(Evaluation, everything())
 

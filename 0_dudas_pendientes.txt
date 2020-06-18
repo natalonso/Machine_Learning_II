@@ -3,5 +3,4 @@
 DUDAS Y COSAS PENDIENTES:
 ################################
 
-
--Test de chow
+-Cómo crear el rmarkdown desde un .r y acceder a partes para ir incorporando texto
