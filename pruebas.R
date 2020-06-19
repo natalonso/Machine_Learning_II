@@ -1,50 +1,96 @@
 
 
-AirPassengers
-class(AirPassengers)
-
-air = as_tsibble(AirPassengers, index = date)
-air$index
-
-class(air$value)
+library(RSNNS) 
+library(quantmod)
 
 
-autoplot(AirPassengers)
+rawData=scan('https://www.diegocalvo.es/wp-content/uploads/2016/09/datos-serie-temporal.txt')
+plot(rawData)
+tsData = ts(rawData, start = c(1966,1), frequency = 12)
+print(tsData)
+plot(tsData)
+
+stsData<-as.ts(tsData, F)
+class(stsData)
+class(tsData)
+
+stsDataN<- (stsData-min(stsData))/(max(stsData)-min(stsData))
+plot(stsDataN)
 
 
-air %>%
-  autoplot(AirPassengers) +
-  labs(title = "Monthly totals of international airline passengers") +
-  xlab("Year") + ylab("passengers")
+
+#definimos un conjunto de datos para train 90% y 10% para test 
+set.seed(1) 
+tamano_total <- length(stsDataN) 
+tamano_total
+
+tamano_train <- round(tamano_total*9/12, digits = 0) 
+tamano_train
+
+train <- 0:(tamano_train-1)
+train
+
+test<-(tamano_train):tamano_total
+test
+
+
+y<-as.zoo(stsDataN) 
+class(y)
+
+x1<-Lag(y,k=1) 
+x2<-Lag(y,k=2) 
+x3<-Lag(y,k=3) 
+x4<-Lag(y,k=4) 
+x5<-Lag(y,k=5) 
+x6<-Lag(y,k=6) 
+x7<-Lag(y,k=7) 
+x8<-Lag(y,k=8) 
+x9<-Lag(y,k=9) 
+x10<-Lag(y,k=10) 
+x11<-Lag(y,k=11) 
+x12<-Lag(y,k=12) 
+slogN<-cbind(y,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12)
 
 
 
-### Fase de estimación y contraste ###
-# 
-# my_tsresiduals <- function (data, ...) {
-#   if (!fabletools::is_mable(data)) {
-#     abort("gg_tsresiduals() must be used with a mable containing only one model.")
-#   }
-#   data <- stats::residuals(data)
-#   if (n_keys(data) > 1) {
-#     abort("gg_tsresiduals() must be used with a mable containing only one model.")
-#   }
-#   gg_tsdisplay(data, !!sym(".resid"), plot_type = "partial",
-#                ...)
-# }
+stsDataN<-slogN[-c(1:12),]
 
-# fit2 <- fires_train %>%
-#   model(arima = ARIMA(value ~ pdq(0,1,0) + PDQ(1,1,0, period= 7)))
-# fit2 %>% my_tsresiduals(lag_max =36)
-# report(fit2)
-# 
-# fit3 <- fires_train %>%
-#   model(arima = ARIMA(value ~ pdq(0,1,0) + PDQ(1,1,1)))
-# fit3 %>% my_tsresiduals(lag_max =36)
-# report(fit3)
-# 
-# 
-# fit4 <- fires_train %>%
-#   model(arima = ARIMA(value ~ pdq(0,1,2) + PDQ(1,1,1)))
-# fit4 %>% my_tsresiduals(lag_max =36)
-# report(fit4)
+inputs<-stsDataN[,2:13]
+outputs<-stsDataN[,1]
+
+
+fit<-elman(inputs[train],
+           outputs[train], 
+           size=c(9,2), # número de capas y de neuronas (dos capas, una de 9 neuronas y otra de 2)
+           learnFuncParams=c(0.1), # ritmo de aprendizaje
+           maxit=5000) # máximo número de iteraciones
+
+y<-as.vector(outputs[-test]) 
+plot(y,type="l")
+
+plotIterativeError(fit, main = "Iterative Error for 3,2 Neuron elman Model")
+
+pred<-predict(fit,inputs[-test]) 
+
+# Estas dos líneas van juntas
+plot(y,type="l")
+lines(pred,col="red")
+
+predictions<-predict(fit,inputs[-train])
+
+valuesPred <- predictions*(max(stsData)-min(stsData)) + min(stsData) 
+valuesPred
+
+x <- 1:(tamano_total+length(valuesPred)) 
+length(x)
+
+y <- c(as.vector(tsData),valuesPred) 
+length(y)
+
+plot(x, y) 
+plot(x[1:tamano_total], 
+     y[1:tamano_total],
+     col = "blue", 
+     type="l") 
+lines(x[(tamano_total):length(x)], y[(tamano_total):length(x)],col="red")
+
