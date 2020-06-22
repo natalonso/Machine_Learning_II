@@ -1,3 +1,4 @@
+
 library(tsibble)
 library(ggplot2)
 library(dplyr)
@@ -12,7 +13,7 @@ library(normtest)
 library(lmtest)
 library(urca)
 
-library(RSNNS) 
+library(RSNNS)
 library(quantmod)
 
 # install.packages("urca")
@@ -93,15 +94,15 @@ slogN<-cbind(y,x1,x2,x3,x4)
 
 stsData_lag<-slogN[-c(1:4),] # quitar los NA: se quita 1998
 
-inputs<-stsData_lag[,2:5]
+inputs<-stsData_lag[,2:5] # los inputs son los retardos, variables
 length(inputs)
 
-outputs<-stsData_lag[,1]
+outputs<-stsData_lag[,1] # el output es la variable respuesta
 length(outputs)
 
 fit<-elman(inputs[train],
            outputs[train], 
-           size=c(9,2), # número de capas y de neuronas (dos capas, una de 9 neuronas y otra de 2)
+           size=c(15, 3), # número de capas y de neuronas (dos capas, una de 9 neuronas y otra de 2)
            learnFuncParams=c(0.1), # ritmo de aprendizaje
            maxit=5000) # máximo número de iteraciones
 
@@ -109,23 +110,29 @@ y<-as.vector(outputs[,-test])
 plot(y,type="l")
 
 plotIterativeError(fit, main = "Iterative Error for 3,2 Neuron elman Model")
-pred<-predict(fit,inputs[-test])
+
+pred_train<-predict(fit,inputs[-test])
+pred_train
+
+pred_test <- predict(fit,inputs[-train])
+pred_test
 
 # Estas dos líneas van juntas
 plot(y,type="l")
 lines(pred,col="red")
 
-predictions <- predict(fit,inputs[-train])
-
 # Desnormalizas 
 
-valuesPred <- predictions*(max(ts_data_all)-min(ts_data_all)) + min(ts_data_all) 
-valuesPred
+valuesPred_test <- pred_test*(max(ts_data_all)-min(ts_data_all)) + min(ts_data_all) 
+valuesPred_test
 
-x <- 1:(tamano_total+length(valuesPred)) 
+valuesPred_train <- pred_train*(max(ts_data_all)-min(ts_data_all)) + min(ts_data_all) 
+valuesPred_train
+
+x <- 1:(tamano_total+length(valuesPred_test)+4) 
 length(x)
 
-y <- c(as.vector(ts_data_all), valuesPred) 
+y <- c(as.vector(ts_data_all), valuesPred_test) 
 length(y)
 
 plot(x, y)
@@ -151,9 +158,21 @@ getPerformance = function(pred, val) {
 }
 
 
-accuracy_test_manual <- getPerformance(fc$value, fires_test$value) %>% 
-  mutate(Evaluation='Test manual')
 
-accuracy_test_manual
+# valor real y prediccion
+
+accuracy_train_elman <- getPerformance(valuesPred_train, ts_data_all[train+4]) %>% 
+  mutate(Evaluation='Train Red Elman') 
+accuracy_train_elman
+
+accuracy_test_elman <- getPerformance(valuesPred_test, ts_data_all[test+4]) %>% 
+  mutate(Evaluation='Test Red Elman')
+accuracy_test_elman
+
+bind_rows(accuracy_train_elman, accuracy_test_elman) %>% select(Evaluation, everything())
+
+
+
+
 
 

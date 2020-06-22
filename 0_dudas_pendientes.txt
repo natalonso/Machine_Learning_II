@@ -4,3 +4,5 @@ DUDAS Y COSAS PENDIENTES:
 ################################
 
 -Cómo crear el rmarkdown desde un .r y acceder a partes para ir incorporando texto
+-Preguntar cómo será la presentación
+-Preparar el rmarkdown
