@@ -1,0 +1,11 @@
+
+
+
+- Dividir en train, test y validación, o solo en train y test??
+- Como modificar el tipo de coste asociados al desequilibrio?? (dentro de la función make_model, MeanSquaredError)
+
+- Como el predict nos devuelve valores entre -1 y 1, sería correcto pasarlo a 0/1 que es como está codificada nuestro target??
+- Cómo saber cual asigna el modelo al 0 y al 1??  <0 a la clase 0 y >0 a la clase 1 o al revés??
+
+- Al analizar la ROC, cómo elegir el Ppaw?? 
+- ¿Cómo analizar los resultados de la ROC y el punto de trabajo?
