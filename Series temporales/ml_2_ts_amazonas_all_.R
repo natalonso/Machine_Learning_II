@@ -17,7 +17,7 @@ library(urca)
 
 # setwd("C:/Users/susi_/Desktop/Machine Learning2/Series_Temporales/practica_local")
 # setwd("C:/Users/Beatriz/Desktop/Máster/3er trimestre/Machine Learning II/Práctica")
-# setwd("C:/Users/natal/OneDrive/Documentos/0_Universidad/10-Master/2_Curso_2019-2020/Tercer_Trimestre/0_Machine_Learning_2/REPO DEF")
+setwd("C:/Users/natal/OneDrive/Documentos/0_Universidad/10-Master/2_Curso_2019-2020/Tercer_Trimestre/0_Machine_Learning_2/Practica definitiva/Series temporales")
 
 Sys.setlocale ("LC_TIME", 'English')
 data <- read.csv("amazon.csv")
