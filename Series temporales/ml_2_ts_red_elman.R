@@ -12,7 +12,6 @@ library(GGally)
 library(normtest)
 library(lmtest)
 library(urca)
-
 library(RSNNS)
 library(quantmod)
 
@@ -115,11 +114,9 @@ pred_train<-predict(fit,inputs[-test])
 pred_train
 
 pred_test <- predict(fit,inputs[-train])
-pred_test
+class(pred_test)
 
-# Estas dos líneas van juntas
-plot(y,type="l")
-lines(pred,col="red")
+
 
 # Desnormalizas 
 
@@ -170,9 +167,4 @@ accuracy_test_elman <- getPerformance(valuesPred_test, ts_data_all[test+4]) %>%
 accuracy_test_elman
 
 bind_rows(accuracy_train_elman, accuracy_test_elman) %>% select(Evaluation, everything())
-
-
-
-
-
 

@@ -17,6 +17,7 @@ library(urca)
 
 # setwd("C:/Users/susi_/Desktop/Machine Learning2/Series_Temporales/practica_local")
 # setwd("C:/Users/Beatriz/Desktop/Máster/3er trimestre/Machine Learning II/Práctica")
+
 setwd("C:/Users/natal/OneDrive/Documentos/0_Universidad/10-Master/2_Curso_2019-2020/Tercer_Trimestre/0_Machine_Learning_2/Practica definitiva/Series temporales")
 
 Sys.setlocale ("LC_TIME", 'English')
@@ -45,7 +46,7 @@ data_all <- data %>%
                  if_else(month == "Outubro", "Oct", "Mar")))))))))))) %>% 
   mutate(new_date = as.yearmon(paste(month, "-", year), "%B - %Y")) %>% 
   group_by(new_date) %>%
-  summarise(total = sum(as.integer(number))) %>% 
+  summarise(total = sum(as.integer(number))) %>%
   mutate(new_quarter = quarter(new_date, with_year = TRUE)) %>%
   group_by(new_quarter) %>%
   summarise(total_quarter = sum(as.integer(total)))
