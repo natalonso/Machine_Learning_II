@@ -1,0 +1,596 @@
+---
+title: "Machine learning II. Series temporales"
+author: "Natalia Alonso, Beatriz Visitación y Susana Albarrán"
+date: "08/07/2020"
+output:
+  html_document:
+    code_folding: show
+    number_sections: yes
+    fig_height: 5
+    fig_width: 8
+    theme: flatly
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+fig_caption: yes
+---
+
+
+```{r, lectura_datos, include=FALSE}
+# setwd("C:/Users/natal/OneDrive/Documentos/0_Universidad/10-Master/2_Curso_2019-2020/Tercer_Trimestre/0_Machine_Learning_2/Practica definitiva/Series temporales")
+Sys.setlocale ("LC_TIME", 'English')
+data <- read.csv("amazon.csv")
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tsibble)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(zoo)
+library(survival)
+library(ggfortify)
+library(tidyverse)
+library(fpp3)
+library(GGally)
+library(normtest)
+library(lmtest)
+library(urca)
+library(RSNNS)
+library(quantmod)
+
+```
+
+# Introducción
+
+<p style = "text-align: justify">
+Los datos que se van a analizar en este proyecto han sido obtenidos desde Kaggle. Continene el número de incendios por zona en Brasil (Amazonas) por meses desde 1998 hasta 2017.
+</p>
+
+
+# Objetivo del estudio
+
+<p style = "text-align: justify">
+El objetivo de este estudio es analizar una serie temporal para poder construir un modelo con el fin de predecir el número de incendios que tendrán lugar en el futuro, basándonos en los datos recogidos en años anteriores.
+</p>
+
+# Datos
+
+<p style = "text-align: justify">
+En primer lugar, se cargan los datos y se seleccionan los campos: **year, month y number**. Convertimos el valor del campo **month**, que inicialmente está en portugués a inglés. Agrupamos por mes y año y hallamos el recuento. Finalmente, decidimos que tiene más sentido agrupar por trimestres y obtener el recuento por trimestres para cada año.
+</p>
+
+```{r data, warning=FALSE, message=FALSE}
+data_all <- data %>%
+  select(year, month, number) %>% 
+  mutate(month = if_else(month == "Abril", "Apr", 
+                 if_else(month == "Agosto", "Aug", 
+                 if_else(month == "Dezembro", "Dec", 
+                 if_else(month == "Fevereiro", "Feb", 
+                 if_else(month == "Janeiro", "Jan", 
+                 if_else(month == "Julho", "Jul", 
+                 if_else(month == "Junho", "Jun", 
+                 if_else(month == "Maio", "May", 
+                 if_else(month == "Setembro", "Sep", 
+                 if_else(month == "Novembro", "Nov",  
+                 if_else(month == "Outubro", "Oct", "Mar")))))))))))) %>% 
+  mutate(new_date = as.yearmon(paste(month, "-", year), "%B - %Y")) %>% 
+  group_by(new_date) %>%
+  summarise(total = sum(as.integer(number))) %>% 
+  mutate(new_quarter = quarter(new_date, with_year = TRUE)) %>%
+  group_by(new_quarter) %>%
+  summarise(total_quarter = sum(as.integer(total)))
+```
+
+Representamos la serie temporal resultante con el recuento por trimestre. Finalmente decidimos filtrar los datos y continuar con los recuentos comprendidos entre el primer trimestre de 1998, y el último de 2014
+
+```{r ts, warning=FALSE}
+ts_data_all<- ts(data_all$total_quarter, start = c(1998,1), frequency = 4)
+fires <- as_tsibble(ts_data_all, index = new_quarter)
+
+fires %>%
+  autoplot(value) +
+  labs(title = "Fires per year") +
+  xlab("Year") + ylab("Fires") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+fires <- fires %>% filter_index("1998 Q1" ~ "2014 Q4")
+```
+
+
+
+
+# Análisis exploratorio
+
+Se divide el conjunto de datos en train (entre 1999 y 2012) y test (2013 y 2014). A continuación, se realiza un análisis exploratorio de la serie temporal, representando una gráfica global mensual para cada año, una visualización por trimestres y una gráfica de dispersión del retardo, para ver la relación entre los valores y los valores aplicando un cierto retardo.
+
+```{r,warning=FALSE}
+fires_train <- fires %>% filter_index("1999 Q1" ~ "2012 Q4")
+fires_test <- fires %>% filter_index("2013 Q1" ~ "2014 Q4")
+
+# Gráfica con todos los años:
+fires_train %>% gg_season(value, labels = "right")
+
+
+# Gráfica por trimestres:
+fires_train %>% gg_subseries(value)
+
+
+# Gráficos de retardo:
+fires_train %>% gg_lag(value, geom="point")
+
+```
+
+
+## Descomposición de la señal: STL
+
+Se analiza también la serie con su descomposición en tendencia, estacionalidad y componente aleatoria.
+
+```{r, warning=FALSE}
+
+
+fires_train %>%
+  model(seats = feasts:::STL(value)) %>%
+  components() %>%
+  autoplot()
+
+```
+
+## Estacionariedad en varianza
+
+Para comprobar la estacionariedad en varianza se aplica el test de lambda guerrero. El valor de lambda es de 1.41, y por tanto, se decide no realizar ninguna transformación.
+
+
+```{r, warning=FALSE}
+
+
+lambda <- fires_train %>%
+  features(value, features = guerrero) %>% 
+  pull(lambda_guerrero)
+lambda
+
+```
+
+## Estacionariedad en media
+
+Para analizar la estacionariedad en media se usa una prueba de raíces unitarias. El p-valor es muy próximo a 0.05, lo que indica que la hipótesis nula es rechazada. Se plantea realizar al menos una diferencia para estabilizar la media. Esto se puede comprobar mediante una prueba de raices unitarias:
+
+
+```{r, warning=FALSE}
+
+fires_train %>% features(value, unitroot_kpss)
+
+```
+
+
+Se aplica una diferencia de una unidad y se repite el test, ahora el p_valor asciende a 0.1. Se asume que será necesario aplicar una diferencia de una unidad.
+
+```{r, warning=FALSE}
+
+fires_train %>% features(difference(value, 1), unitroot_kpss)
+fires_train %>% autoplot(difference(value, 1)) 
+
+```
+
+A continuación, se evalúa el estadístico fuerza estacional FS, este estadístico, sugiere una diferencia estacional si ésta es mayor que 0.64, como es este caso.
+
+
+
+```{r, warning=FALSE}
+
+fires_train %>%
+  mutate(log_turnover = difference(value,1)) %>%
+  features(log_turnover, unitroot_nsdiffs)
+
+```
+
+
+# Modelo autoregresivo: AR
+
+## Determinación del modelo
+
+A continuación, se analiza la autocovarianza **total**: ACF, y **parcial**: PACF, para determinar el orden p (AR) mediante la gráfica PACF, y el orden q (MA) con la gráfica ACF.
+
+```{r, warning=FALSE}
+
+# Autocorrelacion de la serie temporal: ACF
+
+fires_train %>% 
+  ACF(value, lag_max = 100) %>% 
+  autoplot()
+
+# Autocorrelación parcial de la serie temporal: PACF
+fires_train %>% 
+  PACF(value, lag_max = 100) %>% 
+  autoplot()
+
+```
+
+Con la información extraída de las gráficas anteriores, se implementa un modelo SAR (con parámetros [p,d,q] = [1,0,0], [P,D,Q] = [1,0,0] y un periodo = 4). También se ajustaron otros modelos y se comparó el rendimiento, finalmente decidimos seleccionar el anteriormente mencionado dados los resultados de la evaluación.
+
+```{r, warning=FALSE}
+
+# Modelo manual: AR + SAR (SAR)4: pdq(1,0,0) + PDQ(1,0,0),                
+fit_manual <- fires_train %>% model(arima = ARIMA(box_cox(value, lambda) ~ pdq(1,0,0) + PDQ(1,0,0, period = 4)))
+report(fit_manual)
+
+# Modelo manual: AR + SAR + MA + SMA (SARMA)4: pdq(1,0,1) + PDQ(1,0,1)
+# fit_manual <- fires_train %>% model(arima = ARIMA(box_cox(value, lambda) ~ pdq(1,0,1) + PDQ(1,0,1, period = 4)))
+# report(fit_manual)
+
+# Modelo manual: SAR (SAR)4: pdq(0,0,0) + PDQ(1,0,0)
+# fit_manual <- fires_train %>% model(arima = ARIMA(box_cox(value, lambda) ~ pdq(0,0,0) + PDQ(1,0,0, period = 4)))
+# report(fit_manual)
+
+```
+
+
+
+## Diagnosis del modelo
+
+### Análisis de los coeficientes
+
+Se realiza un test para analizar si los coeficientes son significativos.
+
+```{r, warning=FALSE}
+
+#### Estimacion y contraste ####
+
+# Si el p_valor es muy bajo -> los coeficientes son significativos:
+
+t_stat <- tidy(fit_manual)$statistic
+p_value <- tidy(fit_manual)$p.value # h0 es que el coef es 0. como p es 0, se rechaza, entonces es significativo
+rbind(t_stat, p_value)
+
+```
+
+### Análisis de residuos
+
+```{r, warning=FALSE}
+aug <-fit_manual %>% augment()
+
+aug %>%
+  ggplot(aes(x = .resid)) +
+  geom_histogram(bins = 50) +
+  ggtitle("Histogram of residuals")
+
+residual <- stats::residuals(fit_manual)
+gg_tsdisplay(residual,!!sym(".resid"), plot_type = "partial", lag_max = 90)
+
+```
+
+#### Test para la media
+
+```{r, warning=FALSE}
+# Test para la media: la media debería ser cero, para cumplir el test de normalidad: h0: media cero
+# Conclusión: como p_value es "alto", se acepta que la media de los residuos es cero.
+
+t.test(aug$.resid) 
+
+```
+
+#### Test de autocorrelaciones
+
+```{r, warning=FALSE}
+
+# Test de autocorrelaciones: los residuos tienen que ser incorrelados: h0: autocorrelacion de los residuos es 0
+# Conclusión: p_valor "significativo", por tanto aceptamos que los residuos son incorrelados
+# dof: grados de libertad: número de variables
+
+aug %>% features(.resid, ljung_box, lag=8, dof=2)
+
+```
+
+
+#### Test homocedasticidad
+
+```{r, warning=FALSE}
+# Test homocedasticidad: h0: varianza cero-residuos homocedásticos
+# Conclusión: p_valor "grande", aceptamos que la varianza es cero, por tanto, son homocedástico
+
+log_log <- aug %>% as_tibble() %>% 
+  group_by(quarter(index)) %>% 
+  summarize(mean_resid = (mean(.resid+1)), std_resid = (sd(.resid+1)))
+
+summary(lm(std_resid~mean_resid, log_log))
+
+```
+
+#### Test normalidad
+
+```{r, warning=FALSE}
+# Test de normalidad: Jarque Bera test: h0: hay normalidad
+# Conclusión: p_value "grande" -> aceptamos que hay normalidad
+
+jb.norm.test(na.omit(aug$.resid))
+qqnorm(aug$.resid, sub="Gráfico Q para evaluar normalidad");qqline(aug$.resid)
+
+shapiro.test(aug$.resid)
+
+```
+
+
+## Predicción
+
+Se predice el número de incendios para los años 2013 y 2014 y se compara gráficamente los indencios reales frente a los predichos.
+
+```{r, warning=FALSE}
+
+# Residual accuracy
+resids <- fit_manual %>% 
+  accuracy() %>% 
+  select(-c(.model, .type, ME, MPE, ACF1 )) %>% 
+  mutate(Evaluation='Training') 
+
+# Forecasting
+fc <- fit_manual %>%
+  forecast(h=8) 
+
+fc %>%
+  autoplot(fires, level = NULL, col="red", lwd = 2) +
+  ggtitle("Forecasts for fires in Amazonas") +
+  xlab("Year") + ylab("Number of fires")
+```
+
+
+
+## Evaluación del modelo
+
+Para la evaluación del modelo, se usan las siguientes métricas:
+
+  - res: diferencia entre el valor predicho y el real.
+  - MAE: error absoluto medio.
+  - MAE_std: desviación típica del error absoluto.
+  - MAPE: error porcentual absoluto medio.
+  - MAPE_std: desviación típica del error porcentual absoluto medio.
+  - MSE: error cuadrático medio.
+  - MSE_std: desviación del error cuadrático medio.
+  - RMSE: La raíz del error cuadrático medio.
+  - RMSE_std: raiz de la desviación del error cuadrático.
+
+```{r, warning=FALSE}
+getPerformance = function(pred, val) {
+  res = pred - val
+  MAE = sum(abs(res))/length(val)
+  MAE_std = sd(abs(res))
+  MAPE = mean(100*abs(res)/val)
+  MAPE_std = sd(100*abs(res)/val)
+  MSE = sum(res^2)/length(val)
+  MSE_std = sd((res)**2)
+  RMSE = sqrt(MSE)
+  RMSE_std = sqrt(MSE_std)
+  perf = data.frame(MAE,MAE_std,MAPE,MAPE_std,RMSE,RMSE_std)
+}
+
+accuracy_train_manual <-getPerformance(aug$.fitted,fires_train$value) %>% 
+  mutate(Evaluation='Train manual') 
+
+accuracy_test_manual <-getPerformance(fc$value,fires_test$value) %>% 
+  mutate(Evaluation='Test manual')
+
+# Show errors together
+bind_rows(accuracy_train_manual, accuracy_test_manual) %>% select(Evaluation, everything())
+
+#exp(fit_manual$arima[[1]]$fit$est$.fitted)
+
+```
+
+A modo de ejemplo, si analizamos el MAPE, para el conjunto de test, el error sería de 25,7% y para el conjunto de test, de un 14%.
+
+
+
+```{r, warning=FALSE}
+
+aug %>%  ggplot() +
+  geom_line(aes(x = index, y = .fitted), color="navy") +
+  geom_line(aes(x = index, y = value), color="gray24") +
+  # geom_line(data=air_forecast, aes(x = index, y = value), color="red4") +
+  ggtitle("SARIMA train fitted values") +
+  xlab('Dates') +
+  ylab('Fires') + facet_wrap(vars(year(index)), scales = 'free') + 
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+
+## Comparación entre ajuste manual y automático
+
+Por último, se compara el ajuste manual realizado para un modelo SAR y para todas las regiones en conjunto, con un modelo ARIMA automático, por cada región y sumando las diferentes predicciones.
+
+```{r, warning=FALSE, message=FALSE}
+
+regiones <- unique(data$state)
+prediccion_regiones <- data.frame()
+
+for (region in regiones){
+  data_region <- data %>%
+    filter(state == region) %>% 
+    select(year, month, number) %>% 
+    mutate(month = if_else(month == "Abril", "Apr", 
+                   if_else(month == "Agosto", "Aug", 
+                   if_else(month == "Dezembro", "Dec", 
+                   if_else(month == "Fevereiro", "Feb", 
+                   if_else(month == "Janeiro", "Jan", 
+                   if_else(month == "Julho", "Jul", 
+                   if_else(month == "Junho", "Jun", 
+                   if_else(month == "Maio", "May", 
+                   if_else(month == "Setembro", "Sep", 
+                   if_else(month == "Novembro", "Nov",  
+                   if_else(month == "Outubro", "Oct", "Mar")))))))))))) %>% 
+    
+    mutate(new_date = as.yearmon(paste(month, "-", year), "%B - %Y")) %>% 
+    group_by(new_date) %>%
+    summarise(total = sum(as.integer(number))) %>% 
+    mutate(new_quarter = quarter(new_date, with_year = TRUE)) %>%
+    group_by(new_quarter) %>%
+    summarise(total_quarter = sum(as.integer(total)));
+  
+  
+  ts_data_region<- ts(data_region$total_quarter, start = c(1998,1), frequency = 4)
+  fires_region <- as_tsibble(ts_data_region, index = new_quarter)
+
+  fires_region <- fires_region %>% filter_index("1999 Q1" ~ "2014 Q4")
+  
+  # Dividir en train y test:
+  
+  fires_train_region <- fires_region %>% filter_index("1999 Q1" ~ "2012 Q4")
+  fires_test_region <- fires_region %>% filter_index("2013 Q1" ~ "2014 Q4")
+  
+  fit_automatico_region <- fires_train_region %>% model(arima = ARIMA(value))
+  
+  fc_region <- fit_automatico_region %>%
+    forecast(h=8) 
+  
+  prediccion_regiones <- rbind(prediccion_regiones, fc_region$value)
+}
+```
+
+
+Por último, comparamos ambos modelos. Para el conjunto de test con el modelo manual sobre toda la región se obtiene un MAPE de 14,6%. Con el modelo autómatico región a región y sumando las predicciones, un 12,4%.
+
+```{r, warning=FALSE, message=FALSE}
+colnames(prediccion_regiones) <- c("Q1 2013","Q2 2013","Q3 2013","Q4 2013","Q1 2014","Q2 2014","Q3 2014","Q4 2014")
+
+cat("Número real de indencios en los 8 quarters, en todas las regiones: ", sum(fires_test$value),"\n")
+cat("Predicción del número de indencios en los 8 quarters, en todas las regiones con el modelo manual: ", sum(fc$value),"\n")
+cat("Predicción del número de indencios en los 8 quarters, en todas las regiones con el modelo automático: ", sum(prediccion_regiones),"\n")
+
+predioccion_regiones_all <- colSums(prediccion_regiones)
+
+accuracy_test_automatico <-getPerformance(predioccion_regiones_all,fires_test$value) %>% 
+  mutate(Evaluation='Test automatico')
+
+# Show errors together
+bind_rows(accuracy_test_manual, accuracy_test_automatico) %>% select(Evaluation, everything())
+
+```
+
+
+
+# Modelo red neuronal: ELMAN
+
+
+```{r, warning=FALSE}
+
+# Normalizamos:
+stsDataN <- (ts_data_all-min(ts_data_all))/(max(ts_data_all)-min(ts_data_all))
+plot(stsDataN)
+
+
+set.seed(1) 
+
+tamano_total <- length(stsDataN) - 4
+tamano_total
+
+tamano_train <- tamano_total - 8
+tamano_train
+
+train <- 1:(tamano_train)
+train
+length(train)
+
+test<-(tamano_train+1):(tamano_total)
+test
+length(test)
+
+
+y<-as.zoo(stsDataN) 
+class(y)
+y
+
+
+x1<-Lag(y,k=1) 
+x2<-Lag(y,k=2) 
+x3<-Lag(y,k=3) 
+x4<-Lag(y,k=4) 
+
+slogN<-cbind(y,x1,x2,x3,x4)
+
+stsData_lag<-slogN[-c(1:4),] # quitar los NA: se quita 1998
+
+inputs<-stsData_lag[,2:5] # los inputs son los retardos, variables
+length(inputs)
+
+outputs<-stsData_lag[,1] # el output es la variable respuesta
+length(outputs)
+
+fit<-elman(inputs[train],
+           outputs[train], 
+           size=c(15, 3), # número de capas y de neuronas (dos capas, una de 9 neuronas y otra de 2)
+           learnFuncParams=c(0.1), # ritmo de aprendizaje
+           maxit=5000) # máximo número de iteraciones
+
+y<-as.vector(outputs[,-test]) 
+plot(y,type="l")
+
+plotIterativeError(fit, main = "Iterative Error for 3,2 Neuron elman Model")
+
+pred_train<-predict(fit,inputs[-test])
+pred_train
+
+pred_test <- predict(fit,inputs[-train])
+pred_test
+
+
+
+# Desnormalizas 
+
+valuesPred_test <- pred_test*(max(ts_data_all)-min(ts_data_all)) + min(ts_data_all) 
+valuesPred_test
+
+valuesPred_train <- pred_train*(max(ts_data_all)-min(ts_data_all)) + min(ts_data_all) 
+valuesPred_train
+
+x <- 1:(tamano_total+length(valuesPred_test)+4) 
+length(x)
+
+y <- c(as.vector(ts_data_all), valuesPred_test) 
+length(y)
+
+plot(x, y)
+
+plot(x[1:tamano_total], 
+     y[1:tamano_total],
+     col = "blue", 
+     type="l")
+lines(x[(tamano_total):length(x)], y[(tamano_total):length(x)],col="red")
+
+
+getPerformance = function(pred, val) {
+  res = pred - val
+  MAE = sum(abs(res))/length(val)
+  MAE_std = sd(abs(res))
+  MAPE = mean(100*abs(res)/val)
+  MAPE_std = sd(100*abs(res)/val)
+  MSE = sum(res^2)/length(val)
+  MSE_std = sd((res)**2)
+  RMSE = sqrt(MSE)
+  RMSE_std = sqrt(MSE_std)
+  perf = data.frame(MAE,MAE_std,MAPE,MAPE_std,RMSE,RMSE_std)
+}
+
+
+
+# valor real y prediccion
+
+accuracy_train_elman <- getPerformance(valuesPred_train, ts_data_all[train+4]) %>% 
+  mutate(Evaluation='Train Red Elman') 
+accuracy_train_elman
+
+accuracy_test_elman <- getPerformance(valuesPred_test, ts_data_all[test+4]) %>% 
+  mutate(Evaluation='Test Red Elman')
+accuracy_test_elman
+
+bind_rows(accuracy_train_elman, accuracy_test_elman) %>% select(Evaluation, everything())
+
+
+```
+
+
+
+
+
